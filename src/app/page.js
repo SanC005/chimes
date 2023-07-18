@@ -9,8 +9,16 @@ export default function Home() {
       <div className='text-center bold text-white'>
         chimes
       </div>
-      <Profile/>
-      {/* <Sidebar/> */}
+      <div className="">
+        <div className="">
+
+        {/* <Sidebar /> */}
+        </div>
+        <div className="">
+        <Profile />
+
+        </div>
+      </div>
 
     </main>
   )

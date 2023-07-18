@@ -17,7 +17,7 @@ function sidebar() {
     <Menu rootStyles={{
       'height':'40vw',
       'width':'100%',
-
+      'color':'black',
       'padding':'0',
       // 'border':'black solid',
       'background':'white',
