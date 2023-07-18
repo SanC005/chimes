@@ -18,7 +18,7 @@ header{
 }
 nav{
   display: flex;
-  padding: 12px;
+  padding: 12px; /* for height of navbar */
   justify-content: space-between;
   align-items: center;
   background-color: #f1f1f1;
