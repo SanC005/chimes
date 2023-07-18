@@ -7,18 +7,16 @@ export default function Home() {
   return (
     <main>
       {/* <Navbar/> */}
-      <div className='text-center bold text-white'>
+      {/* <div className='text-center bold text-white'>
         chimes
-      </div>
+      </div> */}
       <div className="flex h-100vh">
-          <Sidebar/>
-
-        <div className="absolute start-56 stroke-lime-700 end-0">
-          <Profile/>
-          <Feed/>
+        <Sidebar />
+        <div className="absolute start-56 end-0">
+          <Profile />
+          <Feed />
         </div>
       </div>
-
     </main>
-  )
+  );
 }

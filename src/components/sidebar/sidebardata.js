@@ -20,4 +20,11 @@ export const sidebarEntries= [
     link: "/space",
     slug: "private",
   },
+  {
+    id: 4,
+    title: "Contact",
+    icon: "",
+    link: "/contact",
+    slug: "",
+  },
 ];

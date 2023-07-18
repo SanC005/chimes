@@ -4,7 +4,11 @@ import { sidebarEntries } from "./sidebardata";
 import React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+
 function sidebar() {
+  const boxes = sidebarEntries.map(item => <li className="" key={item.id}>
+    <MenuItem rootStyles={{'width':'100vw'}}>{item.title}</MenuItem>
+  </li>)
   return (
     <div>
 
@@ -33,13 +37,12 @@ function sidebar() {
         <MenuItem> Line charts </MenuItem>
       </SubMenu> */}
       {/* <MenuItem rootStyles={{'width':'100vw'}} className="bg-indigo-500"> Documentation </MenuItem> */}
-
-      
-      <MenuItem> {sidebarEntries[0].title} </MenuItem>
+      <ul> {boxes}</ul>
+      {/* <MenuItem> {sidebarEntries[0].title} </MenuItem>
       <MenuItem> Documentation </MenuItem>
       <MenuItem> Calendar </MenuItem>
       <MenuItem> Documentation </MenuItem>
-      <MenuItem> Calendar </MenuItem>
+      <MenuItem> Calendar </MenuItem> */}
     </Menu>
   </Sidebar>
   </div>
