@@ -26,23 +26,10 @@ function sidebar() {
       'width':'100%',
       'color':'black',
       'padding':'0',
-      // 'border':'black solid',
       'background':'white',
       'display':'flex',
-      // 'overflow':'auto'
     }}>
-      
-      {/* <SubMenu label="Charts">
-        <MenuItem> Pie charts </MenuItem>
-        <MenuItem> Line charts </MenuItem>
-      </SubMenu> */}
-      {/* <MenuItem rootStyles={{'width':'100vw'}} className="bg-indigo-500"> Documentation </MenuItem> */}
       <ul> {boxes}</ul>
-      {/* <MenuItem> {sidebarEntries[0].title} </MenuItem>
-      <MenuItem> Documentation </MenuItem>
-      <MenuItem> Calendar </MenuItem>
-      <MenuItem> Documentation </MenuItem>
-      <MenuItem> Calendar </MenuItem> */}
     </Menu>
   </Sidebar>
   </div>

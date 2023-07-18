@@ -22,6 +22,13 @@ export const sidebarEntries= [
   },
   {
     id: 4,
+    title: "Likes",
+    icon: "",
+    link: "/likes",
+    slug: "",
+  },
+  {
+    id: 5,
     title: "Contact",
     icon: "",
     link: "/contact",

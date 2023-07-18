@@ -17,6 +17,7 @@ function Profile() {
             src="https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg"
             className="object-cover rounded-full w-48 h-48"
           ></img>
+          
         </div>
         <div className="flex-col bg-blue-400 w-1/3 text-left rounded-lg p-4 ">
             <div className="flex justify-between">
