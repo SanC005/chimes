@@ -1,11 +1,14 @@
 "use client"
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-
+import { sidebarEntries } from "./sidebardata";
 import React from "react";
-
-
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 function sidebar() {
   return (
+    <div>
+
+    
     <Sidebar rootStyles={{
      'height' :'100vh',
      'background':'white',
@@ -25,18 +28,21 @@ function sidebar() {
       // 'overflow':'auto'
     }}>
       
-      <SubMenu label="Charts">
+      {/* <SubMenu label="Charts">
         <MenuItem> Pie charts </MenuItem>
         <MenuItem> Line charts </MenuItem>
-      </SubMenu>
-      <MenuItem rootStyles={{'width':'100vw'}} className="bg-indigo-500"> Documentation </MenuItem>
-      <MenuItem> Calendar </MenuItem>
+      </SubMenu> */}
+      {/* <MenuItem rootStyles={{'width':'100vw'}} className="bg-indigo-500"> Documentation </MenuItem> */}
+
+      
+      <MenuItem> {sidebarEntries[0].title} </MenuItem>
       <MenuItem> Documentation </MenuItem>
       <MenuItem> Calendar </MenuItem>
       <MenuItem> Documentation </MenuItem>
       <MenuItem> Calendar </MenuItem>
     </Menu>
   </Sidebar>
+  </div>
   )
 }
 
