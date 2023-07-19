@@ -7,7 +7,7 @@ import "../styles/global.css";
 import Feed from "@/components/feed";
 import { useState } from "react";
 export default function Home() {
-  const [buttonPopup,setButtonPopup] = useState(false);
+  // const [buttonPopup,setButtonPopup] = useState(false);
   return (
     <div>
       <main>
@@ -24,9 +24,9 @@ export default function Home() {
       </div>
     </main>
     <div className="">
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+      {/* <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h3>This is my popup</h3>
-      </Popup>
+      </Popup> */}
 
     </div>
     </div>
