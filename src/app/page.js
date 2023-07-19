@@ -1,6 +1,6 @@
 // import Navbar from "@/components/navbar"
 "use client"
-import Profile from "@/components/profile";
+import Profile from "@/components/profile/profile";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Popup from "@/components/Popup";
 import "../styles/global.css";
