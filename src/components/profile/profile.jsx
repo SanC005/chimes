@@ -11,7 +11,7 @@ function Profile() {
 
   }
   function changeDesc(){
-
+      //textArea or Popup
   }
   return (
     <div className="text-white justify-center">

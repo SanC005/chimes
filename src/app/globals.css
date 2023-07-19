@@ -3,7 +3,7 @@
 @tailwind utilities;
 @layer components {
   .btn-primary {
-    @apply w-full border-lime-400 border-2 hover:bg-green-500 focus:bg-black active:bg-blue-800;
+    @apply w-full border-lime-400 border hover:bg-green-500 focus:bg-black active:bg-green-700;
   }
 }
 :root {
