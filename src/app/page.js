@@ -16,7 +16,7 @@ export default function Home() {
         chimes
       </div> */}
       <div className="flex h-100vh">
-        {/* <Sidebar /> */}
+        {/* <Sidebar/> */}
         <div className="absolute start-56 end-0">
           <Profile />
           <Feed />
