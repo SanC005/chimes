@@ -1,6 +1,13 @@
-import React from 'react'
+"use client"
+import React,{useState} from 'react'
+import Popup from './Popup';
 
 function Post() {
+    const increase = () => setLikecount((likecount) => likecount + 1);
+    function HandleClick() {
+        // setLikecount((likecount) => (likecount+1));
+    }
+    const [likecount, setLikecount] = useState(0);
   return (
     <div className='bg-green-400 text-center w-1/3 h-72 rounded-2xl flex flex-col'>
         <div className='h-16 text-xl'>title</div>
@@ -18,10 +25,13 @@ function Post() {
             <div className='h-full'>Link</div>
 
         <div className='flex justify-around bottom-0'>
-            <div className="w-full border-lime-400 border-2 rounded-bl-2xl">Like</div>
-            <div className='w-full border-lime-400 border-2'>Comment</div>
-            <div className='w-full border-lime-400 border-2 rounded-br-2xl'>Share</div>
+            <div className="btn-primary rounded-bl-2xl">
+                <button onClick={increase}>{likecount} Likes</button>
+            </div>
+            <div className='btn-primary border-2'>Comment</div>
+            <div className='btn-primary rounded-br-2xl'>Share</div>
         </div>
+            
     </div>
   )
 }
