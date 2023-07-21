@@ -12,6 +12,7 @@ function Profile() {
   }
   function changeDesc(){
       //textArea or Popup
+      console.log("changing desc")
   }
   return (
     <div className="text-white justify-center">
@@ -34,7 +35,7 @@ function Profile() {
         <div className="flex-col bg-blue-500 w-1/3 text-left rounded-lg p-4 ">
             <div className="flex justify-between">
             <div className="pb-3">{person.username}</div>
-            <div className="bg-blue-700 text-center w-1/4 rounded-lg h-1/4"><EditIcon/>edit</div>
+            <div className="bg-blue-700 text-center w-1/4 rounded-lg h-1/4" onClick={changeDesc()}><EditIcon/>edit</div>
 
             </div>
             <div className="text-sm h-5/6 bg-blue-400 w-full rounded-lg p-1 px-2">{person.description}</div>
