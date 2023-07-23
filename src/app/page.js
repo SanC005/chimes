@@ -4,9 +4,9 @@ import Profile from "@/components/profile/profile";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Popup from "@/components/Popup";
 import "../styles/global.css";
-import Feed from "@/components/feed";
+import Feed from "@/components/public_feed/feed";
 import { useState } from "react";
-import Feedgrid from "@/components/feedgrid";
+import Feedgrid from "@/components/public_feed/feedgrid";
 export default function Home() {
   // const [buttonPopup,setButtonPopup] = useState(false);
   return (

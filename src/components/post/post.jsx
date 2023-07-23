@@ -5,8 +5,8 @@ import Link from "next/link";
 
 function Post(props) {
   const increase = () => setLikecount((likecount) => likecount + 1);
-  const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   // function HandleClick() {
   // setLikecount((likecount) => (likecount+1));
   // }
@@ -15,6 +15,7 @@ function Post(props) {
     //w-1/3 earlier before mapping
     <div className="bg-green-400 text-center w-full h-72 rounded-2xl flex flex-col"> 
       <div className="h-16 text-xl">{props.title}</div>
+    <Link href={props.link} target="_blank" rel="noopener noreferrer">
       <div className="flex justify-around h-full">
         <div className="px-1">
           <img
@@ -25,12 +26,15 @@ function Post(props) {
           ></img>
         </div>
       </div>
+        </Link>
+      <div className="flex flex-col">
       <div className="h-full">{props.postTitle}</div>
-      <div className="h-full text-sm hover:text-gray-200 active:text-gray-500">
-        
-        <Link href={props.link}>{props.link}</Link>
+      <div className="h-full p-2 text-sm hover:text-gray-200 active:text-gray-500">
+      <Link href={props.link} target="_blank" rel="noopener noreferrer">{props.link}</Link>
         </div>
-
+      </div>
+      
+      
       <div className="flex justify-around bottom-0">
         <div className="btn-primary rounded-bl-2xl" onClick={increase}>
           {likecount} Likes

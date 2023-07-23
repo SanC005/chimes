@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import EditIcon from '@mui/icons-material/Edit';
+import Desc from "../desc";
 function Profile() {
   const [person,setPerson] = useState({
     icon:"https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
     username:"Username",
     description:"write your description!"
   })
+  const [buttonEdit, setButtonEdit] = useState(false);
+  const ChangeDesc = () => setButtonEdit((buttonEdit) => !buttonEdit);
   function changeIcon(){
 
   }
@@ -38,7 +41,7 @@ function Profile() {
             <div className="bg-blue-700 text-center w-1/4 rounded-lg h-1/4" onClick={changeDesc()}><EditIcon/>edit</div>
 
             </div>
-            <div className="text-sm h-5/6 bg-blue-400 w-full rounded-lg p-1 px-2">{person.description}</div>
+            <div className="text-sm h-5/6 bg-blue-400 w-full rounded-lg p-1 px-2"><Desc text={person.description} trigger={buttonEdit} setTrigger={setButtonEdit}/></div>
         </div>
       </div>
       <div className="flex justify-evenly text-2xl text-center">
