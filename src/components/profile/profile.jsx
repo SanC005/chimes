@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import EditIcon from '@mui/icons-material/Edit';
 import Desc from "../desc";
 function Profile() {
@@ -49,7 +50,7 @@ function Profile() {
             Public
         </div>
         <div className="border-red-500 hover:bg-white hover:text-black w-full">
-            Private
+            <Link href="/private">Private</Link>
         </div>
       </div>
      
