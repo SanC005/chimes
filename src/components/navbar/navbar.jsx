@@ -12,7 +12,7 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
   return (
-    <div className="h-full">
+    <div className="">
       <header>
         <nav className={`nav`}>
           <Link href={"/"}>

@@ -19,7 +19,8 @@ header{
 }
 nav{
   display: flex;
-  padding: 4px; /* for height of navbar */
+  padding: 4px; 
+  /* for height of navbar */
   justify-content: space-between;
   align-items: center;
   background-color: rgb(74, 128, 209);
@@ -42,11 +43,11 @@ nav{
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 60px;
+  /* top: 60px;
   width: 288px;
   row-gap: 24px;
-  right: -288px;
-  padding: 16px 16px;
+  right: -288px; */
+  padding: 1rem 1rem;
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
   background-color: rgb(74, 128, 209);

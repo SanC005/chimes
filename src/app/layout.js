@@ -11,16 +11,20 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const font = inter.className;
+  
   return (
-    <html lang="en">
-
-      <div className="h-5">
+    // <html lang="en">
+    <div className="">
+        <div className="h-16 py-1">
           <Navbar/>
       </div>
       <div className="">
-        <body className={inter.className}>{children}</body>
+        {children}
       </div>
+    </div>
+      
 
-    </html>
+    // </html>
   )
 }
