@@ -1,8 +1,8 @@
 
 
-export default function DefaultProfile() {
+export default function DefaultProfile({params}) {
     return (
-      <div> Default page page</div>
+      <div> Default profile page {params.slug}</div>
     )
   }
   

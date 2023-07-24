@@ -10,12 +10,11 @@ export default function Home() {
   // const [buttonPopup,setButtonPopup] = useState(false);
   return (
     <div>
-      <main>
 
       {/* <div className='text-center bold text-white'>
         chimes
       </div> */}
-      <div className="flex h-100vh">
+      <div className="flex">
         {/* <Sidebar/> */}
         <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
           <Profile />
@@ -23,7 +22,6 @@ export default function Home() {
           <Feedgrid/>
         </div>
       </div>
-    </main>
     </div>
     
   );
