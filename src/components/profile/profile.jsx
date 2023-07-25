@@ -53,7 +53,7 @@ function Profile() {
         <Link href="/public">Public</Link>
         </div>
         <div className="border-red-500 hover:bg-white hover:text-black w-full">
-            <Link className="w-full bg-blue-500" href="/private">Private</Link>
+            <Link className="w-full bg-red-500" href="/private">Private</Link>
         </div>
       </div>
      

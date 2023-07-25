@@ -13,17 +13,22 @@ export default function Layout({ children }) {
   const font = inter.className;
   
   return (
-    // <html lang="en">
+    <html lang="en">
     <div className="">
+      <body>
         <div className="h-16 py-1">
           <Navbar/>
       </div>
-      <div className="">
+        <div>
         {children}
-      </div>
+
+        </div>
+
+      </body>
+      
     </div>
       
 
-    // </html>
+    </html>
   )
 }
