@@ -29,6 +29,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+
 /* Navbar CSS */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap');
 * {
@@ -65,12 +67,12 @@ nav{
   cursor: pointer;
   
 }
-.nav__menu-bar div{
+/* .nav__menu-bar div{
   width: 1rem;
   height: 4px;
   border-radius: 2px;
-  color:black;
-}
+  color:white;
+} */
 .nav__menu-list{
   display: flex;
   flex-direction: column;

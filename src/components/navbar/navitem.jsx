@@ -1,9 +1,12 @@
 import Link from "next/link";
 const NavItem = ({ text, href, active }) => {
     return (
-      <Link href={href}>
-        <p className={`nav__link`}>{text}</p>
-      </Link>
+      <div className="w-28 h-full text-center text-xl min-w-16 ">
+        <Link href={href}>
+          <p className="hover:text-black hover:bg-white h-full  p-4">{text}</p>
+        </Link>
+
+      </div>
     );
   };
   

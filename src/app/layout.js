@@ -16,7 +16,7 @@ export default function Layout({ children }) {
     <html lang="en">
     <div className="">
       <body>
-        <div className="h-16 py-1">
+        <div className="h-16">
           <Navbar/>
       </div>
         <div>
