@@ -7,7 +7,7 @@ function Addpost() {
     console.log("adding new post")
   }
   return (
-    <div className="bg-green-400 text-center w-full h-72 rounded-2xl"> 
+    <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl"> 
     <div className='flex h-full justify-center items-center' >
     <   AddIcon onClick={addnew} sx={{ fontSize: 180 }}/>
 
