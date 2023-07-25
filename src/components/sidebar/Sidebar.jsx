@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-function sidebar() {
+export default function SidebarComp() {
   const boxes = sidebarEntries.map(item => <li className="" key={item.id}>
     <MenuItem rootStyles={{'width':'100vw'}}>{item.title}</MenuItem>
   </li>)
@@ -36,4 +36,4 @@ function sidebar() {
   )
 }
 
-export default sidebar;
+

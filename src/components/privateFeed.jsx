@@ -3,10 +3,10 @@
 import React from 'react'
 import Addpost from './post/addpost'
 
-function Private() {
+function PrivateFeed() {
   return (
     <Addpost/>
   )
 }
 
-export default Private
+export default PrivateFeed

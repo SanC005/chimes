@@ -4,7 +4,13 @@ import Popup from "../Popup";
 import Link from "next/link";
 
 function Post(props) {
-  const increase = () => setLikecount((likecount) => likecount + 1);
+  const increase = () => {
+    setLikecount((likecount) => likecount + 1);
+    console.log("increasing")
+  }
+  function increase2(){
+    console.log("inc2");
+  }
   const [buttonPopup, setButtonPopup] = useState(false);
   const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   // function HandleClick() {
@@ -36,7 +42,7 @@ function Post(props) {
       
       
       <div className="flex justify-around bottom-0">
-        <div className="btn-primary rounded-bl-2xl" onClick={increase}>
+        <div className="btn-primary rounded-bl-2xl " onClick={increase}>
           {likecount} Likes
           {/* <button className="w-full" onClick={increase}>{likecount} Likes</button> */}
         </div>

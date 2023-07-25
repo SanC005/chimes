@@ -13,7 +13,7 @@ function Profile() {
   const [buttonEdit, setButtonEdit] = useState(false);
   const ChangeDesc = () => {
     // setButtonEdit((buttonEdit) => !buttonEdit);
-    console.log("editing");
+    console.log({buttonEdit});
   }
   function changeIcon(){
 
@@ -50,10 +50,10 @@ function Profile() {
       </div>
       <div className="flex justify-evenly text-2xl text-center">
         <div className="border-red-500 hover:bg-white hover:text-black w-full">
-            Public
+        <Link href="/public">Public</Link>
         </div>
         <div className="border-red-500 hover:bg-white hover:text-black w-full">
-            <Link href="/private">Private</Link>
+            <Link className="w-full bg-blue-500" href="/private">Private</Link>
         </div>
       </div>
      
