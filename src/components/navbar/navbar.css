@@ -39,7 +39,7 @@ nav{
   border-radius: 2px;
   color:black;
 }
-.nav__menu-list{
+.nav__menu-list logo{
   display: flex;
   flex-direction: column;
   position: fixed;

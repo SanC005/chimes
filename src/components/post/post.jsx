@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Popup from "../popup";
+import Popup from "../popups/popup";
 import Link from "next/link";
+import Sharebox from "components/popups/sharebox";
+import Comments from "components/popups/comments";
 
 function Post(props) {
   const increase = () => {
@@ -11,14 +13,19 @@ function Post(props) {
   function increase2(){
     console.log("inc2");
   }
-  const [buttonPopup, setButtonPopup] = useState(false);
   const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
+  const openShare = () => {
+    setExpand((expand) => (!expand))
+  }
   // function HandleClick() {
-  // setLikecount((likecount) => (likecount+1));
-  // }
+    // setLikecount((likecount) => (likecount+1));
+    // }
+  const [buttonPopup, setButtonPopup] = useState(false);
   const [likecount, setLikecount] = useState(0);
+  const [ expand,setExpand] = useState(false);
   return (
     //w-1/3 earlier before mapping
+    <div>
     <div className="bg-green-400 text-center w-full h-72 rounded-2xl flex flex-col"> 
       <div className="h-16 text-xl">{props.title}</div>
     <Link href={props.link} target="_blank" rel="noopener noreferrer">
@@ -41,13 +48,13 @@ function Post(props) {
       </div>
       
       
-      <div className="flex justify-around bottom-0">
+      <div className="flex justify-around bottom-0 ">
         <div className="btn-primary rounded-bl-2xl " onClick={increase}>
           {likecount} Likes
           {/* <button className="w-full" onClick={increase}>{likecount} Likes</button> */}
         </div>
         <div className="btn-primary">Comment</div>
-        <div className="btn-primary rounded-br-2xl" onClick={openPopup}>
+        <div className="btn-primary rounded-br-2xl" onClick={openShare}>
           Share
         </div>
       </div>
@@ -55,6 +62,12 @@ function Post(props) {
         <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
           <h3>This is my popup</h3>
         </Popup>
+      </div>
+    </div>
+      <div className={"bg-black h-20 block "+(expand ? 'block' : 'hidden')}>
+        <Sharebox/>
+        {/* <Comments/> */}
+        
       </div>
     </div>
   );
