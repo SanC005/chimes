@@ -1,15 +1,15 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import Desc from "../desc";
 function Profile() {
-  const [person,setPerson] = useState({
-    icon:"https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
-    username:"Username",
-    description:"write your description!"
-  })
+  const [person, setPerson] = useState({
+    icon: "https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
+    username: "Username",
+    description: "write your description!",
+  });
   const [buttonEdit, setButtonEdit] = useState({
     value: false,
     text: "edit",
@@ -17,11 +17,9 @@ function Profile() {
   const ChangeDesc = () => {
     // setButtonEdit((buttonEdit) => !buttonEdit);
     console.log("desc");
-  }
-  function changeIcon(){
+  };
+  function changeIcon() {}
 
-  }
-  
   return (
     <div className="bg-cyan-700">
       {/* <Image
@@ -52,28 +50,39 @@ function Profile() {
         </div>
       </div> */}
       <div class="max-w-lg  mx-auto bg-slate-100 rounded-xl shadow-md overflow-hidden md:max-w-3xl p-10 ">
-  <div className="md:flex md:justify-evenly">
-    <div className="md:shrink-0 flex justify-center">
-      <img class="h-36 w-36 object-cover md:h-48 md:w-48 rounded-full" src={person.icon} alt="Profile Icon"></img>
-    </div>
-    <div className="p-8">
-      <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold text-center md:text-left">{person.username}</div>
-      <a href="#" className="block mt-1 text-lg leading-tight font-medium text-black hover:underline text-center md:text-left"><EditIcon/> Edit</a>
-      <p className="mt-2 text-slate-500 text-center md:text-left">{person.description}</p>
-    </div>
-  </div>
-</div>
-      <div className="flex justify-evenly text-2xl text-center bg-black">
-      <Link className="w-full" href="/public"><div className=" hover:bg-white hover:text-black w-full">
-      Public
-        </div></Link>
-        
-        <Link className="w-full" href="/private"><div className=" hover:bg-white hover:text-black w-full">
-        Private
-            </div></Link>
-        
+        <div className="md:flex md:justify-evenly">
+          <div className="md:shrink-0 flex justify-center">
+            <img
+              class="h-36 w-36 object-cover md:h-48 md:w-48 rounded-full"
+              src={person.icon}
+              alt="Profile Icon"
+            ></img>
+          </div>
+          <div className="p-8">
+            <div className="uppercase tracking-wide text-md text-indigo-500 font-semibold text-center md:text-left">
+              {person.username}
+            </div>
+            <a
+              href="#"
+              className="block mt-1 text-md leading-tight font-medium text-black hover:underline text-center md:text-left"
+            >
+              <EditIcon /> Edit
+            </a>
+            <p className="mt-2 text-slate-500 text-center md:text-left">
+              {person.description}
+            </p>
+          </div>
+        </div>
       </div>
-     
+      <div className="flex justify-evenly text-2xl text-center bg-black">
+        <Link className="w-full" href="/public">
+          <div className=" hover:bg-white hover:text-black w-full">Public</div>
+        </Link>
+
+        <Link className="w-full" href="/private">
+          <div className=" hover:bg-white hover:text-black w-full">Private</div>
+        </Link>
+      </div>
     </div>
   );
 }

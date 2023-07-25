@@ -2,7 +2,7 @@ import React from 'react'
 
 function Comments() {
   return (
-    <div>comments</div>
+    <div className='bg-blue-400'>comments</div>
   )
 }
 
