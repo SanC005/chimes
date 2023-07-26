@@ -10,7 +10,7 @@ export default function Home() {
       
     <Profile />
     {/* <Feedgrid data={postDatas}/> */}
-
+    
     </div>
   );
 }

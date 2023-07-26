@@ -9,10 +9,8 @@ function Post(props) {
   const increase = () => {
     setLikecount((likecount) => likecount + 1);
     console.log("increasing");
+    // alert(`${expand.opens} ${expand.window}`)
   };
-  function increase2() {
-    console.log("inc2");
-  }
   const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const openShare = (e) => {
     // alert(expand.opens)
@@ -70,7 +68,7 @@ function Post(props) {
           </div>
         </div>
 
-        <div className="flex justify-around bottom-0 ">
+        <div className="flex justify-around bottom-0 cursor-pointer">
           <div className="btn-primary rounded-bl-2xl " onClick={increase}>
             {likecount} Likes
             {/* <button className="w-full" onClick={increase}>{likecount} Likes</button> */}
@@ -97,11 +95,11 @@ function Post(props) {
         </div>
       </div>
       <div
-        className={`bg-black h-20 block max-w-md m-auto ${
+        className={`bg-black rounded-xl m-1 h-20 block max-w-md m-auto ${
           expand.opens ? "block" : "hidden"
         }`}
       >
-        <div>{win == "comment" ? <Comments /> : <Sharebox />}</div>
+        <div className="">{win == "comment" ? <Comments /> : <Sharebox data={props}/>}</div>
       </div>
     </div>
   );
