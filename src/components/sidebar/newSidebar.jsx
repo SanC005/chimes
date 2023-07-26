@@ -5,7 +5,7 @@ export default function NewSidebar() {
         <li className="h-16 text-lg p-4 hover:bg-white hover:text-black" key={entry.id}>{entry.title}</li>
     )
   return (
-    <div className="">
+    <div className="bg-inherit h-screen fixed w-56">
       <ul className="flex flex-col ">{item}</ul>
     </div>
   );
