@@ -1,8 +1,11 @@
+import Profile from "components/profile/profile";
 
 
-export default function DefaultProfile({params}) {
+export default function DefaultProfile() {
     return (
-      <div> Default profile page {params.slug}</div>
+      <div> 
+        <Profile/>
+        Default profile page </div>
     )
   }
   

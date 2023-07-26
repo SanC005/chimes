@@ -1,6 +1,6 @@
 import React from 'react'
 import Post from '../post/post'
-import { postDatas } from '../post/postdata'
+import { postDatas } from './postdata'
 function Feed() {
     const post = postDatas.map(postData => 
         <li className="p-2" key={postData.id}>

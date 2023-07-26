@@ -10,14 +10,14 @@ export const sidebarEntries= [
     id: 2,
     title: "Public",
     icon: "",
-    link: "/space",
+    link: "/public",
     slug: "public",
   },
   {
     id: 3,
     title: "Private",
     icon: "",
-    link: "/space",
+    link: "/private",
     slug: "private",
   },
   {
