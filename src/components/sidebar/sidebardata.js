@@ -1,4 +1,4 @@
-export const sidebarEntries= [
+export const sidebarEntries = [
   {
     id: 1,
     title: "Home",

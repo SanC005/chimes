@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import EditIcon from "@mui/icons-material/Edit";
-import Desc from "../desc";
+import Desc from "./description/desc";
+import { CheckBox } from "@mui/icons-material";
 function Profile() {
   const [person, setPerson] = useState({
     icon: "https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
@@ -15,8 +16,8 @@ function Profile() {
     text: "edit",
   });
   const ChangeDesc = () => {
-    // setButtonEdit((buttonEdit) => !buttonEdit);
-    console.log("desc");
+    setButtonEdit((buttonEdit) => !buttonEdit);
+    // alert(buttonEdit)
   };
   function changeIcon() {}
 
@@ -62,12 +63,22 @@ function Profile() {
             <div className="uppercase tracking-wide text-md text-indigo-500 font-semibold text-center md:text-left">
               {person.username}
             </div>
-            <a
-              href="#"
-              className="block mt-1 text-md leading-tight font-medium text-black hover:underline text-center md:text-left"
+            <div
+              onClick={ChangeDesc}
+              className="block mt-1 text-black hover:bg-slate-200 text-center md:text-left pr-2 cursor-pointer"
             >
-              <EditIcon /> Edit
-            </a>
+              {buttonEdit ? (
+                <div className="">
+                  <EditIcon />
+                  Edit
+                </div>
+              ) : (
+                <div>
+                  <CheckBox />
+                  Save
+                </div>
+              )}
+            </div>
             <p className="mt-2 text-slate-500 text-center md:text-left">
               {person.description}
             </p>

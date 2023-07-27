@@ -30,21 +30,20 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-
 /* Navbar CSS */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   outline: none;
   box-sizing: border-box;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-header{
+header {
   display: absolute;
   position: fixed;
   width: 100vw;

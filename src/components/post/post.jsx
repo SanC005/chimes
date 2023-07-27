@@ -14,15 +14,18 @@ function Post(props) {
   const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const openShare = (e) => {
     // alert(expand.opens)
-    if(e==expand.window){
+    if (e == expand.window) {
       setExpand((prev) => ({
-        ...prev, opens: false, window: "empty"
-      }))
-    }
-    else{
+        ...prev,
+        opens: false,
+        window: "empty",
+      }));
+    } else {
       setExpand((prev) => ({
-        ...prev, opens: true, window: e
-      }))
+        ...prev,
+        opens: true,
+        window: e,
+      }));
     }
     // setExpand((prev) => ({
     //   ...prev,
@@ -99,7 +102,9 @@ function Post(props) {
           expand.opens ? "block" : "hidden"
         }`}
       >
-        <div className="">{win == "comment" ? <Comments /> : <Sharebox data={props}/>}</div>
+        <div className="">
+          {win == "comment" ? <Comments /> : <Sharebox data={props} />}
+        </div>
       </div>
     </div>
   );

@@ -7,10 +7,9 @@ import { postDatas } from "components/public_feed/postdata";
 export default function Home() {
   return (
     <div className="">
-      
-    <Profile />
-    {/* <Feedgrid data={postDatas}/> */}
-    
+      <Profile />
+      <div>Home Page</div>
+      {/* <Feedgrid data={postDatas}/> */}
     </div>
   );
 }

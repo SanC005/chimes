@@ -4,9 +4,9 @@ import { postDatas } from "components/public_feed/postdata";
 
 export default function Public() {
   return (
-    <div> 
+    <div>
       <Profile />
-    <Feedgrid data={postDatas}/>
+      <Feedgrid data={postDatas} />
     </div>
-  )
+  );
 }
