@@ -14,7 +14,6 @@ export default function Layout({ children }) {
 
   return (
     <html lang="en">
-      <div className="">
         <body>
           <div className="h-16">
             <Navbar />
@@ -29,7 +28,6 @@ export default function Layout({ children }) {
             </div>
           </div>
         </body>
-      </div>
     </html>
   );
 }
