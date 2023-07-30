@@ -1,0 +1,3 @@
+[submodule "chimes-api"]
+	path = chimes-api
+	url = https://github.com/SanC005/chimes-api
