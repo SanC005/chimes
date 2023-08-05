@@ -4,7 +4,7 @@ import { postDatas } from "./postdata";
 import Addpost from "../post/addpost";
 function Feedgrid({ data }) {
   const post = data?.map((postData) => (
-    <li className="p-2" key={postData.id}>
+    <li className="p-2" key={postData._id}>
       <Post
         title={postData.title}
         img={postData.img}

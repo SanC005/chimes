@@ -1,21 +1,21 @@
-// "use client"
+"use client"
 import Profile from "components/profile/profile";
 // import "src/app/globals.css";
 import Feedgrid from "components/public_feed/feedgrid";
 import NewSidebar from "components/sidebar/newSidebar";
 import { postDatas } from "components/public_feed/postdata";
+import { useState } from "react";
 // import Postingdata from "components/post/PostingData";
 
 function fetchData(url) {
   return new Promise((resolve, reject) => {
-    fetch(url, {
-    method: "GET",
+    fetch(url)
     // headers: {
     //   "Content-Type": "application/json",
     //   "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
     // },
     // body: JSON.stringify({}),
-  }).then((response) => {
+  .then((response) => {
     if (response.ok) {
       return response.json();
     } else {
@@ -44,16 +44,16 @@ function fetchData(url) {
 //   return res.json()
 // }
 export default function Home() {
-  let data
+  const [val,setVal] = useState({})
   fetchData(`https://chimes-api.vercel.app/api/v1/posts`).then(function(result){
           console.log("setting")
           console.log(result)
-          data =result
+          setVal(result)
           // setVal(result)
           console.log("setted")
   })
 
-  const items = data?.posts
+  const items = val?.posts
   // console.log(data)
   // const box = items.map(item => <li key={item._id}>{item.title}</li>
   // )
