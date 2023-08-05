@@ -45,7 +45,7 @@ function fetchData(url) {
 // }
 export default function Home() {
   let data
-  fetchData(`http://localhost:5001/api/v1/posts`).then(function(result){
+  fetchData(`https://chimes-api.vercel.app/api/v1/posts`).then(function(result){
           console.log("setting")
           console.log(result)
           data =result
