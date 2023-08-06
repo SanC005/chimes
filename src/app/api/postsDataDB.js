@@ -4,8 +4,8 @@ function fetchData(url) {
       if (response.ok) {
         return response.json();
       } else {
-        throw new Error("Network response was not ok.");
-          // console.log("error")
+        // throw new Error("Network response was not ok.");
+          console.log("error")
       }
     })
     .then((data) => {
@@ -16,18 +16,14 @@ function fetchData(url) {
     });
     });
 }
-export default function PostsData(){
-    fetchData(`https://chimes-api-sanc005.vercel.app/api/v1/posts`).then(function(result){
+export default function PostsDataDB(url){
+  console.log(url)
+    fetchData(url).then(function(result){
           console.log("setting")
           console.log(result)
-          setVal(result)
-          // setVal(result)
-
           console.log("setted")
-        }).then(() => {
+        }).then((res) =>{
 
-          console.log(val)
-          console.log("this is val")
-        }
-  )
+          return res
+        })
 }

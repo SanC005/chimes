@@ -4,7 +4,8 @@ import Profile from "components/profile/profile";
 import Feedgrid from "components/public_feed/feedgrid";
 import NewSidebar from "components/sidebar/newSidebar";
 import { postDatas } from "components/public_feed/postdata";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PostsDataDB from "./api/postsDataDB";
 // import Postingdata from "components/post/PostingData";
 
 function fetchData(url) {
@@ -15,6 +16,7 @@ function fetchData(url) {
     //   "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
     // },
     // body: JSON.stringify({}),
+  
   .then((response) => {
     if (response.ok) {
       return response.json();
@@ -31,6 +33,7 @@ function fetchData(url) {
   });
   });
 }
+
 // async function getData() {
 //   const res = await fetch('http://localhost:5001/api/v1/posts')
 //   // The return value is *not* serialized
@@ -45,15 +48,41 @@ function fetchData(url) {
 // }
 export default function Home() {
   const [val,setVal] = useState({})
-  fetchData(`https://chimes-api.vercel.app/api/v1/posts`).then(function(result){
-          console.log("setting")
-          console.log(result)
+  const url = `https://chimes-api.vercel.app/api/v1/posts`
+  // const url = `https://jsonplaceholder.typicode.com/posts`
+  fetchData(url).then(function(result){
+          console.log("fetching posts...")
           setVal(result)
-          // setVal(result)
-          console.log("setted")
+          // console.log(result)
   })
+  // useEffect(() => {
+  //   async function fetchMyAPI() {
+  //     let response = await fetch('api/data')
+  //     response = await response.json()
+  //     dataSet(response)
+  //   }
 
-  const items = val?.posts
+  //   fetchMyAPI()
+  // }, [])
+  // useEffect(() => {
+  //   async function fetchAPI(urls){
+  //     let response = await PostsDataDB(urls)
+  //     response = await response.json
+  //     console.log(response)
+  //     setVal(response)
+  //   }
+  //   fetchAPI(url)
+  // },[])
+  //   const data = PostsData(url)
+  //   console.log("this is data??")
+  // }, []).then(() => {
+  //   console.log(data)
+  //   console.log("data ended]]]")
+  //   setVal(data)
+  // })
+    
+    const items = val?.posts
+    
   // console.log(data)
   // const box = items.map(item => <li key={item._id}>{item.title}</li>
   // )

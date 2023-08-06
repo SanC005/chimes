@@ -8,8 +8,9 @@ function Addpost() {
   const changeLink = (e) => {
       setLinkText(e)
   }
-  const addnew = () => {
-    alert(linktext)
+  const addnew = (e) => {
+    e.preventDefault()
+    console.log("working")
     getLinkPreview(linktext).then((data) =>{
       console.log(data)
       setLinkData(data)
@@ -29,7 +30,7 @@ function Addpost() {
             <label className="">Link 
             <input className="mx-2"type="text" onChange={(e) => changeLink(e.target.value)} />
             </label>
-            <button onClick={addnew} className="bg-slate-400 m-1 p-1 rounded-md">Add</button>
+            <button onClick={(e) => addnew(e)} className="bg-slate-400 m-1 p-1 rounded-md">Add</button>
           </form>
         </div>
       </div>
