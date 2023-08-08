@@ -2,21 +2,72 @@
 import React, { useState } from "react";
 import { getLinkPreview } from "link-preview-js";
 import AddIcon from "@mui/icons-material/Add";
+function postData(linkdata,) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://chimes-api.vercel.app/api/v1/posts`,{
+      method:"POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      "title": linkdata?.title,
+      "img": linkdata?.image,
+      "postTitle": linkdata?.description,
+      "link": linkdata?.url,
+    })
+  }
+    )
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      console.log(linkdata.url)
+      throw new Error("Post didnt happen.");
+    }
+  })
+  .then((data) => {
+    resolve(data);
+  })
+  .catch((error) => {
+    reject(error);
+  });
+  });
+}
+function fetchData(url) {
+  return new Promise((resolve, reject) => {
+    fetch(url)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("Network response was not ok.");
+        // console.log("error")
+    }
+  })
+  .then((data) => {
+    resolve(data);
+  })
+  .catch((error) => {
+    reject(error);
+  });
+  });
+}
 function Addpost() {
   const [linktext,setLinkText]= useState("");
-  const [linkdata,setLinkData]= useState("");
+  const [linkdata,setLinkData]= useState({});
   const changeLink = (e) => {
       setLinkText(e)
   }
   const addnew = (e) => {
     e.preventDefault()
     console.log("working")
-    getLinkPreview(linktext).then((data) =>{
-      console.log(data)
-      setLinkData(data)
-    }
-    );
-    console.log(setLinkData)
+    fetchData(`http://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`).then(function(result){
+      console.log("fetching link...")
+      setLinkData(result)
+      console.log(result)
+      console.log("got link")
+      })
+    postData(linkdata)
   };
   return (
     <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl hover:bg-green-500 active:bg-green-600">
