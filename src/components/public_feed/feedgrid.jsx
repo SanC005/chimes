@@ -1,11 +1,11 @@
 import React from "react";
 import Post from "../post/post";
-import { postDatas } from "./postdata";
 import Addpost from "../post/addpost";
 function Feedgrid({ data }) {
   const post = data?.map((postData) => (
     <li className="p-2" key={postData._id}>
       <Post
+        _id={postData._id}
         title={postData.title}
         img={postData.img}
         postTitle={postData.postTitle}

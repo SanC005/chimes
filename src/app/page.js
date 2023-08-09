@@ -18,12 +18,15 @@ function fetchData(url) {
     // body: JSON.stringify({}),
   
   .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error("Network response was not ok.");
-        // console.log("error")
-    }
+    // if (response.ok) {
+    //   // return response.json();
+    //   console.log("working")
+    // } else {
+    //   throw new Error("Network response was not ok.");
+    //     // console.log("error")
+    // }
+
+    return response.json()
   })
   .then((data) => {
     resolve(data);
@@ -47,14 +50,31 @@ function fetchData(url) {
 //   return res.json()
 // }
 export default function Home() {
-  const [val,setVal] = useState({})
+  const [val,setVal] = useState(null)
   const url = `https://chimes-api.vercel.app/api/v1/posts`
   // const url = `https://jsonplaceholder.typicode.com/posts`
-  fetchData(url).then(function(result){
-          console.log("fetching posts...")
-          setVal(result)
-          // console.log(result)
-  })
+
+ 
+  
+  useEffect(() => {
+    fetch(url).then(response => response.json()).then(data =>{
+      // console.log(data.posts[0])
+      setVal(data?.posts)
+    } )
+    
+  }, [])
+  
+  
+
+  // fetchData(url).then(function(result){
+  //         console.log("fetching posts...")
+          
+  //         setVal(result)
+  //         console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+
+  //         const {_id} = result;
+  //         console.log(_id)
+  // })
   // useEffect(() => {
   //   async function fetchMyAPI() {
   //     let response = await fetch('api/data')
@@ -81,7 +101,6 @@ export default function Home() {
   //   setVal(data)
   // })
     
-    const items = val?.posts
     
   // console.log(data)
   // const box = items.map(item => <li key={item._id}>{item.title}</li>
@@ -89,7 +108,7 @@ export default function Home() {
   return (
     <div className="">
       <Profile />
-      <Feedgrid data={items}/>
+      <Feedgrid data={val}/>
     </div>
   );
 }

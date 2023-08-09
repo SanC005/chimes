@@ -4,10 +4,26 @@ import Popup from "../popups/popup";
 import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
-
+import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
+function Deletepost(id) {
+  fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`,{
+    method:"DELETE",
+  // headers: {
+  //   "Content-Type": "application/json",
+  // },
+  // body: JSON.stringify({
+  //   "title": linkdata?.title,
+  //   "img": linkdata?.image,
+  //   "postTitle": linkdata?.description,
+  //   "link": linkdata?.url,
+  // })
+}
+  )
+}
 function Post(props) {
+  const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer"
   const increase = () => {
-    setLikecount((likecount) => likecount + 1);
+    setLikecount((likecount) => likecount + 1);       
     console.log("increasing");
     // alert(`${expand.opens} ${expand.window}`)
   };
@@ -27,15 +43,7 @@ function Post(props) {
         window: e,
       }));
     }
-    // setExpand((prev) => ({
-    //   ...prev,
-    //   window: e,
-    //   opens: !prev.opens,
-    // }));
   };
-  // function HandleClick() {
-  // setLikecount((likecount) => (likecount+1));
-  // }
   const [buttonPopup, setButtonPopup] = useState(false);
   const [likecount, setLikecount] = useState(0);
   //UseReducer?
@@ -48,8 +56,13 @@ function Post(props) {
     //w-1/3 earlier before mapping
     // {`text-white ${true?'text-green-500' : 'text-red-500'`} template string
     <div>
-      <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col">
-        <div className="h-16 text-xl">{props.title}</div>
+      <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col ">
+      <div className="flex justify-end gap-1">
+        <div className={`${buttonStyles}`}><Visibility/></div>
+        <div className={`${buttonStyles}`}><BookmarkAdd/></div>
+        <div className={`${buttonStyles}`} onClick={() => Deletepost(props._id)}><Close/></div>
+        </div>
+        <div className="h-16 text-xl truncate">{props.title}</div>
         <Link href={props.link} target="_blank" rel="noopener noreferrer">
           <div className="flex justify-around h-full">
             <div className="px-1">
@@ -63,8 +76,8 @@ function Post(props) {
           </div>
         </Link>
         <div className="flex flex-col">
-          <div className="h-full">{props.postTitle}</div>
-          <div className="h-full p-2 text-sm hover:text-gray-200 active:text-gray-500">
+          <div className="h-8 text-sm truncate ">{props.postTitle}</div>
+          <div className="h-8 p-2 text-sm hover:text-gray-200 active:text-gray-500">
             <Link href={props.link} target="_blank" rel="noopener noreferrer">
               {props.link}
             </Link>
