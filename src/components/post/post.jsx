@@ -5,7 +5,9 @@ import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
 import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
-function Deletepost(id) {
+function Deletepost(id,setCount) {
+  
+
   fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`,{
     method:"DELETE",
   // headers: {
@@ -18,7 +20,7 @@ function Deletepost(id) {
   //   "link": linkdata?.url,
   // })
 }
-  )
+  ).then(() => setCount((count) => (count-1)))
 }
 function Post(props) {
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer"
@@ -27,7 +29,7 @@ function Post(props) {
     console.log("increasing");
     // alert(`${expand.opens} ${expand.window}`)
   };
-  const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
+  // const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const openShare = (e) => {
     // alert(expand.opens)
     if (e === expand.window) {
@@ -60,7 +62,7 @@ function Post(props) {
       <div className="flex justify-end gap-1">
         <div className={`${buttonStyles}`}><Visibility/></div>
         <div className={`${buttonStyles}`}><BookmarkAdd/></div>
-        <div className={`${buttonStyles}`} onClick={() => Deletepost(props._id)}><Close/></div>
+        <div className={`${buttonStyles}`} onClick={() => Deletepost(props._id,props.setCount)}><Close/></div>
         </div>
         <div className="h-16 text-xl truncate">{props.title}</div>
         <Link href={props.link} target="_blank" rel="noopener noreferrer">

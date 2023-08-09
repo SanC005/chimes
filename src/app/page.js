@@ -50,19 +50,20 @@ function fetchData(url) {
 //   return res.json()
 // }
 export default function Home() {
+  const [count,setCount] = useState(0);
   const [val,setVal] = useState(null)
-  const url = `https://chimes-api.vercel.app/api/v1/posts`
   // const url = `https://jsonplaceholder.typicode.com/posts`
-
- 
+  
+  
   
   useEffect(() => {
+    const url = `https://chimes-api.vercel.app/api/v1/posts`
     fetch(url).then(response => response.json()).then(data =>{
       // console.log(data.posts[0])
       setVal(data?.posts)
     } )
     
-  }, [])
+  }, [count])
   
   
 
@@ -108,7 +109,8 @@ export default function Home() {
   return (
     <div className="">
       <Profile />
-      <Feedgrid data={val}/>
+      <div className="bg-red-500" onClick={() => console.log(count)}>hey</div>
+      <Feedgrid data={val} setCount={setCount}/>
     </div>
   );
 }

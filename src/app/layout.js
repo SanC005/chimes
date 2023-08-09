@@ -8,6 +8,24 @@ export const metadata = {
   title: "chimes",
   description: "Created by SanC005",
 };
+const originalConsoleWarn = console.warn;
+
+console.warn = function (...args) {
+  if (
+    args[0] &&
+    typeof args[0] === 'string' &&
+    args[0].includes('Support for defaultProps will be removed')
+  ) {
+    // Do nothing or perform custom action, like logging to a different service
+    // For example: YourLogger.logWarning(args[0]);
+    return;
+  }
+
+  // If the warning is not about defaultProps, proceed with the original console.warn
+  originalConsoleWarn.apply(console, args);
+};
+
+// Now, any warning related to defaultProps will not be logged in the console
 
 export default function Layout({ children }) {
   const font = inter.className;
