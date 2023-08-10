@@ -30,7 +30,7 @@ function postData(linkdata,setCount) {
   .then((data) => {
     resolve(data);
   })
-  .then(()=> setCount((count) => (count+1)))
+  // .then(()=> setCount((count) => (count+1)))
   .catch((error) => {
     reject(error);
   });
@@ -55,7 +55,7 @@ function fetchData(url) {
   });
   });
 }
-function Addpost({setCount}) {
+function Addpost({setCount,data}) {
   const [linktext,setLinkText]= useState("");
   const [linkdata,setLinkData]= useState({});
   const changeLink = (e) => {
@@ -69,6 +69,8 @@ function Addpost({setCount}) {
       setLinkData(result)
       console.log(result)
       console.log("got link")
+      data.push(result)
+      console.log(data)
       }).then(function(result){
         console.log("fetching link...")
         postData(linkdata,setCount)

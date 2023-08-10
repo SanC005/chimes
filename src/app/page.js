@@ -1,116 +1,44 @@
-"use client"
-import Profile from "components/profile/profile";
-// import "src/app/globals.css";
-import Feedgrid from "components/public_feed/feedgrid";
-import NewSidebar from "components/sidebar/newSidebar";
-import { postDatas } from "components/public_feed/postdata";
-import { useEffect, useState } from "react";
-import PostsDataDB from "./api/postsDataDB";
-// import Postingdata from "components/post/PostingData";
+"use client";
+// const originalConsoleWarn = console.warn;
 
-function fetchData(url) {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-    // headers: {
-    //   "Content-Type": "application/json",
-    //   "x-api-key": process.env.NEXT_PUBLIC_API_KEY,
-    // },
-    // body: JSON.stringify({}),
-  
-  .then((response) => {
-    // if (response.ok) {
-    //   // return response.json();
-    //   console.log("working")
-    // } else {
-    //   throw new Error("Network response was not ok.");
-    //     // console.log("error")
-    // }
-
-    return response.json()
-  })
-  .then((data) => {
-    resolve(data);
-  })
-  .catch((error) => {
-    reject(error);
-  });
-  });
-}
-
-// async function getData() {
-//   const res = await fetch('http://localhost:5001/api/v1/posts')
-//   // The return value is *not* serialized
-//   // You can return Date, Map, Set, etc.
- 
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error('Failed to fetch data')
+// console.warn = function (...args) {
+//   if (
+//     args[0] &&
+//     typeof args[0] === "string" &&
+//     args[0].includes("Support for defaultProps will be removed")
+//   ) {
+//     // Do nothing or perform custom action, like logging to a different service
+//     // For example: YourLogger.logWarning(args[0]);
+//     return;
 //   }
 
-//   return res.json()
-// }
+//   // If the warning is not about defaultProps, proceed with the original console.warn
+//   originalConsoleWarn.apply(console, args);
+// };
+import Profile from "components/profile/profile";
+import Feedgrid from "components/public_feed/feedgrid";
+import NewSidebar from "components/sidebar/newSidebar";
+import { useEffect, useState } from "react";
+// import { postDatas } from "components/public_feed/postdata";
+// import PostsDataDB from "./api/postsDataDB";
+// import Postingdata from "components/post/PostingData";
+
 export default function Home() {
-  const [count,setCount] = useState(0);
-  const [val,setVal] = useState(null)
-  // const url = `https://jsonplaceholder.typicode.com/posts`
-  
-  
-  
+  const [count, setCount] = useState(0);
+  const [val, setVal] = useState(null);
   useEffect(() => {
-    const url = `https://chimes-api.vercel.app/api/v1/posts`
-    fetch(url).then(response => response.json()).then(data =>{
-      // console.log(data.posts[0])
-      setVal(data?.posts)
-    } )
-    
-  }, [count])
-  
-  
-
-  // fetchData(url).then(function(result){
-  //         console.log("fetching posts...")
-          
-  //         setVal(result)
-  //         console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-
-  //         const {_id} = result;
-  //         console.log(_id)
-  // })
-  // useEffect(() => {
-  //   async function fetchMyAPI() {
-  //     let response = await fetch('api/data')
-  //     response = await response.json()
-  //     dataSet(response)
-  //   }
-
-  //   fetchMyAPI()
-  // }, [])
-  // useEffect(() => {
-  //   async function fetchAPI(urls){
-  //     let response = await PostsDataDB(urls)
-  //     response = await response.json
-  //     console.log(response)
-  //     setVal(response)
-  //   }
-  //   fetchAPI(url)
-  // },[])
-  //   const data = PostsData(url)
-  //   console.log("this is data??")
-  // }, []).then(() => {
-  //   console.log(data)
-  //   console.log("data ended]]]")
-  //   setVal(data)
-  // })
-    
-    
-  // console.log(data)
-  // const box = items.map(item => <li key={item._id}>{item.title}</li>
-  // )
+    const url = `https://chimes-api.vercel.app/api/v1/posts`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setVal(data?.posts);
+      });
+  }, [val]);
   return (
     <div className="">
       <Profile />
-      <div className="bg-red-500" onClick={() => console.log(count)}>hey</div>
-      <Feedgrid data={val} setCount={setCount}/>
+      {/* <div className="bg-red-500" onClick={() => console.log(count)}>hey</div> */}
+      <Feedgrid data={val} setCount={setCount} setVal={setVal}/>
     </div>
   );
 }
