@@ -15,7 +15,7 @@ function Deletepost(id, setCount,data) {
   fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`, {
     method: "DELETE",
   })
-  // .then(() => setCount((count) => count - 1));
+  .then(() => setCount((count) => count - 1));
 }
 function Post(props) {
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";

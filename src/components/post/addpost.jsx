@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getLinkPreview } from "link-preview-js";
 import AddIcon from "@mui/icons-material/Add";
 function postData(linkdata,setCount) {
@@ -19,10 +19,9 @@ function postData(linkdata,setCount) {
     )
   .then((response) => {
     if (response.ok) {
-      
       return response.json();
     } else {
-      console.log(linkdata.url)
+      console.log(linkdata?.url)
       console.log("post didnt add")
       // throw new Error("Post didnt happen.");
     }
@@ -58,25 +57,27 @@ function fetchData(url) {
 function Addpost({setCount,data}) {
   const [linktext,setLinkText]= useState("");
   const [linkdata,setLinkData]= useState({});
+  useEffect(() => {
+    console.log("fetching link...")
+    postData(linkdata).then(setCount((count) => (count+1)))
+  },[linkdata])
+  
   const changeLink = (e) => {
       setLinkText(e)
   }
-  const addnew = (e) => {
+  const addnew = async (e) => {
     e.preventDefault()
     console.log("working")
-    fetchData(`http://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`).then(function(result){
+    await fetchData(`http://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`).then(function(result){
       console.log("fetching link...")
-      setLinkData(result)
-      console.log(result)
-      console.log("got link")
-      data.push(result)
-      console.log(data)
-      }).then(function(result){
-        console.log("fetching link...")
-        postData(linkdata,setCount)
-        
-        })
       
+      console.log(result)
+      setLinkData(result)
+      console.log("got link")
+      // data.push(result)
+      // console.log(data)
+      })
+        
   };
   return (
     <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl hover:bg-green-500 active:bg-green-600">
