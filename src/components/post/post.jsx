@@ -6,7 +6,7 @@ import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
 import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
 function Deletepost(id, setCount,data) {
-  console.log(data)
+  // console.log(data)
   // Object.keys(data).forEach(function(_id){
   //   if (data[_id] === id) {
   //     delete data[_id];
@@ -15,7 +15,10 @@ function Deletepost(id, setCount,data) {
   fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`, {
     method: "DELETE",
   })
-  .then(() => setCount((count) => count - 1));
+  .then(setTimeout(() => {
+    console.log('count decremented...')
+    setCount((count) => count - 1)
+  }, 1000));
 }
 function Post(props) {
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";

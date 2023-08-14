@@ -1,65 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getLinkPreview } from "link-preview-js";
-import AddIcon from "@mui/icons-material/Add";
-function postData(linkdata,setCount) {
-  return new Promise((resolve, reject) => {
-    fetch(`https://chimes-api.vercel.app/api/v1/posts`,{
-      method:"POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      "title": linkdata?.title,
-      "img": linkdata?.image,
-      "postTitle": linkdata?.description,
-      "link": linkdata?.url,
-    })
-  }
-    )
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      console.log(linkdata?.url)
-      console.log("post didnt add")
-      // throw new Error("Post didnt happen.");
-    }
-  })
-  .then((data) => {
-    resolve(data);
-  })
-  // .then(()=> setCount((count) => (count+1)))
-  .catch((error) => {
-    reject(error);
-  });
-  });
-}
-function fetchData(url) {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      console.log("error while fetching")
-      throw new Error("Network response was not ok.");
-    }
-  })
-  .then((data) => {
-    resolve(data);
-  })
-  .catch((error) => {
-    reject(error);
-  });
-  });
-}
-function Addpost({setCount,data}) {
+import {postData,fetchData} from "app/api/postData";
+// import { getLinkPreview } from "link-preview-js";
+// import AddIcon from "@mui/icons-material/Add";
+
+function Addpost({setCount,data,setData}) {
   const [linktext,setLinkText]= useState("");
   const [linkdata,setLinkData]= useState({});
   useEffect(() => {
     console.log("fetching link...")
-    postData(linkdata).then(setCount((count) => (count+1)))
+    const url = `https://chimes-api.vercel.app/api/v1/posts`
+    postData(linkdata,url)
+    .then(setTimeout(() => {
+      console.log('count incremented...')
+      setCount((count) => count + 1)
+    }, 1000));
   },[linkdata])
   
   const changeLink = (e) => {
@@ -73,8 +28,14 @@ function Addpost({setCount,data}) {
       
       console.log(result)
       setLinkData(result)
-      console.log("got link")
-      // data.push(result)
+      console.log("got link and this is the new data")
+      // data.push({
+      //   "title": linkdata?.title || "basic title",
+      //   "img": linkdata?.image || "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      //   "postTitle": linkdata?.description || "basic description",
+      //   "link": linkdata?.url || "www.google.com",
+      // })
+      // setData(data)
       // console.log(data)
       })
         

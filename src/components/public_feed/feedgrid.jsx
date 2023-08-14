@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "../post/post";
 import Addpost from "../post/addpost";
-function Feedgrid({ data,setCount,setVal }) {
+function Feedgrid({ data,setCount,setData }) {
   const post = data?.map((postData) => (
     <li className="p-2" key={postData._id}>
       <Post
@@ -17,7 +17,7 @@ function Feedgrid({ data,setCount,setVal }) {
   return (
     <div className="grid grid-cols-1 bg-cyan-500 list-none p-2 md:grid-cols-2 lg:grid-cols-3">
       <div className="p-2">
-        <Addpost setCount={setCount} data={data} setVal={setVal}/>
+        <Addpost setCount={setCount} data={data} setData={setData}/>
       </div>
       {post}
     </div>

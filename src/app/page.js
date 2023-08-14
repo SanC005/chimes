@@ -39,7 +39,7 @@ export default function Home() {
       <Profile />
       {val? <div>
       <div className="bg-red-500" onClick={() => console.log(count)}>hey</div>
-      <Feedgrid data={val} setCount={setCount} setVal={setVal}/>
+      <Feedgrid data={val} setCount={setCount} setData={setVal}/>
       </div>:<div>Loading...</div>}
     </div>
   );
