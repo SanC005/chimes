@@ -3,6 +3,7 @@ import Navbar from "components/navbar/navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import NewSidebar from "components/sidebar/newSidebar";
+import ThemeContextProvider from "utils/themeContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body>
+        <ThemeContextProvider>
         <div className="h-16">
           <Navbar />
         </div>
@@ -28,6 +30,7 @@ export default function Layout({ children }) {
             {children}
           </div>
         </div>
+        </ThemeContextProvider>
       </body>
     </html>
   );

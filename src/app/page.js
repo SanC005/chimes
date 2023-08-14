@@ -13,8 +13,9 @@ console.warn = function (...args) {
 import Profile from "components/profile/profile";
 import Feedgrid from "components/public_feed/feedgrid";
 import NewSidebar from "components/sidebar/newSidebar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import getData from "./api/getData";
+import { ThemeContext, ThemeUpdateContext } from "utils/themeContext";
 // import { postDatas } from "components/public_feed/postdata";
 // import PostsDataDB from "./api/postsDataDB";
 // import Postingdata from "components/post/PostingData";
@@ -33,12 +34,13 @@ export default function Home() {
     //       setVal(data?.posts);
     //     });
     }, [count]);
-
+    const darkTheme = useContext(ThemeContext)
+    const toggleTheme = useContext(ThemeUpdateContext)
   return (
     <div className="">
       <Profile />
       {val? <div>
-      <div className="bg-red-500" onClick={() => console.log(count)}>hey</div>
+      <div className={darkTheme? `bg-black`:`bg-red-500`} onClick={toggleTheme}>hey</div>
       <Feedgrid data={val} setCount={setCount} setData={setVal}/>
       </div>:<div>Loading...</div>}
     </div>
