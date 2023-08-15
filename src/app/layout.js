@@ -4,6 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import NewSidebar from "components/sidebar/newSidebar";
 import ThemeContextProvider from "utils/themeContext";
+import PostContext from "utils/postContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,6 +19,7 @@ export default function Layout({ children }) {
     <html lang="en">
       <body>
         <ThemeContextProvider>
+          <PostContext>
         <div className="h-16">
           <Navbar />
         </div>
@@ -30,6 +32,7 @@ export default function Layout({ children }) {
             {children}
           </div>
         </div>
+        </PostContext>
         </ThemeContextProvider>
       </body>
     </html>

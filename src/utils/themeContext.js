@@ -1,8 +1,14 @@
 "use client"
-import React, { useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
-export const ThemeContext = React.createContext()
-export const ThemeUpdateContext = React.createContext()
+const ThemeContext = createContext()
+const ThemeUpdateContext = createContext()
+export function useTheme(){
+    return useContext(ThemeContext)
+}
+export function useUpdateTheme(){
+    return useContext(ThemeUpdateContext)
+}
 export default function ThemeContextProvider({children}) {
     const [darkTheme,setDarkTheme] = useState(true)
     function toggleTheme(){
