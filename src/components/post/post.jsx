@@ -5,14 +5,12 @@ import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
 import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
-import { usePostContext } from "utils/postContext";
 import { useUpdatePostContext } from "utils/postContext";
 
 
 function Post(props) {
   const [buttonPopup, setButtonPopup] = useState(false);
 const [likecount, setLikecount] = useState(0);
-const { postItem, setPostItem } = usePostContext();
 const {AddPost,DeletePost} = useUpdatePostContext();
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";
   function Deletepost(delete_id) {
@@ -38,9 +36,9 @@ const {AddPost,DeletePost} = useUpdatePostContext();
       // setPostItem(filtered)
   
   
-    // fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`, {
-    //   method: "DELETE",
-    // })
+    fetch(`https://chimes-api.vercel.app/api/v1/posts/${delete_id}`, {
+      method: "DELETE",
+    })
     // .then(setTimeout(() => {
     //   console.log('count decremented...')
     //   // setCount((count) => count - 1)

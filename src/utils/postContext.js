@@ -31,7 +31,7 @@ export default function PostContextProvider({children}) {
   //   setPostItem(arg)
   // }
   return (
-    <PostItemContext.Provider value={{postItem}}>
+    <PostItemContext.Provider value={{postItem,setPostItem}}>
       <updatePostContext.Provider value={{AddPost,DeletePost}}>
       {children}
       </updatePostContext.Provider>

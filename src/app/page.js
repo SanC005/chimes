@@ -6,17 +6,26 @@ import { useEffect, useState } from "react";
 import getData from "./api/getData";
 import { useTheme, useUpdateTheme } from "utils/themeContext";
 import { usePostContext } from "utils/postContext";
+import { useUpdatePostContext } from "utils/postContext";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const { postItem, setPostItem } = usePostContext();
+  const { postItem,setPostItem } = usePostContext();
+  const {AddPost,DeletePost} = useUpdatePostContext();
   useEffect(() => {
     console.log("rendering...");
     const url = `https://chimes-api.vercel.app/api/v1/posts`;
-    // getData(url).then((data) => setPostItem(data?.posts));
+    getData(url).then((data) => {
+      console.log(data.posts)
+      setPostItem(data?.posts)
+      // data?.map((ele) => console.log(ele.id))
+      // .forEach(element => {
+      //   AddPost(element)
+      // })
+    }
+    );
     console.log("new postitem")
     console.log(postItem);
-  }, [postItem]);
+  }, []);
   const darkTheme = useTheme();
   const toggleTheme = useUpdateTheme();
   return (

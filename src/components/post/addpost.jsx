@@ -11,7 +11,6 @@ function Addpost({setCount,data,setData}) {
   const { postItem} = usePostContext();
   const {AddPost,DeletePost} = useUpdatePostContext();
   useEffect(() => {
-    console.log("fetching link...")
     //Adding to useContext
     const newitemlist = postItem
     let item = { id:String(Math.random()),
@@ -22,6 +21,7 @@ function Addpost({setCount,data,setData}) {
     console.log("before")
     console.log(postItem)
     AddPost(item)
+    console.log("after")
     console.log(postItem)
     // console.log("item aara")
     // console.log(item)
@@ -31,8 +31,8 @@ function Addpost({setCount,data,setData}) {
     // console.log(newitemlist)
     // setPostItem(newitemlist) //issue here
     // console.log("this is item")
-    // const url = `https://chimes-api.vercel.app/api/v1/posts`
-    // postData(linkdata,url)
+    const url = `https://chimes-api.vercel.app/api/v1/posts`
+    postData(item,url)
     // .then(setTimeout(() => {
     //   console.log('count incremented...')
     //   setCount((count) => count + 1)
