@@ -5,13 +5,14 @@ import { usePostContext, useUpdatePostContext } from "utils/postContext";
 // import { getLinkPreview } from "link-preview-js";
 // import AddIcon from "@mui/icons-material/Add";
 
-function Addpost({setCount,data,setData}) {
+function Addpost() {
   const [linktext,setLinkText]= useState("");
   const [linkdata,setLinkData]= useState({});
   const { postItem} = usePostContext();
   const {AddPost,DeletePost} = useUpdatePostContext();
   useEffect(() => {
     //Adding to useContext
+    console.log("adding new post...")
     const newitemlist = postItem
     let item = { id:String(Math.random()),
       title: linkdata?.title || "no title available",
