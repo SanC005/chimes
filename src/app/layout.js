@@ -19,7 +19,6 @@ export default function Layout({ children }) {
     <html lang="en">
       <body>
         <ThemeContextProvider>
-          <PostContext>
         <div className="h-16">
           <Navbar />
         </div>
@@ -29,10 +28,11 @@ export default function Layout({ children }) {
             <NewSidebar />
           </div>
           <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
+          <PostContext>
             {children}
+        </PostContext>
           </div>
         </div>
-        </PostContext>
         </ThemeContextProvider>
       </body>
     </html>

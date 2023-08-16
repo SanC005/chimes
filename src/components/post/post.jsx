@@ -5,7 +5,7 @@ import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
 import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
-function Deletepost(id, setCount,data) {
+function Deletepost(id, setCount) {
   // console.log(data)
   // Object.keys(data).forEach(function(_id){
   //   if (data[_id] === id) {
@@ -25,11 +25,9 @@ function Post(props) {
   const increase = () => {
     setLikecount((likecount) => likecount + 1);
     console.log("increasing");
-    // alert(`${expand.opens} ${expand.window}`)
   };
   // const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const openShare = (e) => {
-    // alert(expand.opens)
     if (e === expand.window) {
       setExpand((prev) => ({
         ...prev,

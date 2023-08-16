@@ -1,7 +1,10 @@
 import React from "react";
 import Post from "../post/post";
 import Addpost from "../post/addpost";
+// import { usePostContext } from "utils/postContext";
+
 function Feedgrid({ data,setCount,setData }) {
+  // const { postItem, setPostItem } = usePostContext();
   const post = data?.map((postData) => (
     <li className="p-2" key={postData._id}>
       <Post

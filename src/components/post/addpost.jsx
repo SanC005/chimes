@@ -1,14 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import {postData,fetchData} from "app/api/postData";
+import { usePostContext } from "utils/postContext";
 // import { getLinkPreview } from "link-preview-js";
 // import AddIcon from "@mui/icons-material/Add";
 
 function Addpost({setCount,data,setData}) {
   const [linktext,setLinkText]= useState("");
   const [linkdata,setLinkData]= useState({});
+  const { postItem, setPostItem } = usePostContext();
   useEffect(() => {
     console.log("fetching link...")
+    //Adding to useContext
+    const item = { _id:String(Math.random()),
+      title: linkdata?.title,
+    img: linkdata?.image,
+    postTitle: linkdata?.description,
+    link: linkdata?.url}
+    console.log(postItem)
+    const newitemlist = postItem.push(item)
+    console.log(newitemlist)
+    // setPostItem(newitemlist)
+    console.log("this is item")
     const url = `https://chimes-api.vercel.app/api/v1/posts`
     postData(linkdata,url)
     .then(setTimeout(() => {
