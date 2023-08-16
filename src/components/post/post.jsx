@@ -5,23 +5,45 @@ import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
 import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
-function Deletepost(id, setCount) {
-  // console.log(data)
-  // Object.keys(data).forEach(function(_id){
-  //   if (data[_id] === id) {
-  //     delete data[_id];
-  //   }
-  // });
-  fetch(`https://chimes-api.vercel.app/api/v1/posts/${id}`, {
-    method: "DELETE",
-  })
-  .then(setTimeout(() => {
-    console.log('count decremented...')
-    setCount((count) => count - 1)
-  }, 1000));
-}
+import { useUpdatePostContext } from "utils/postContext";
+
+
 function Post(props) {
+  const [buttonPopup, setButtonPopup] = useState(false);
+const [likecount, setLikecount] = useState(0);
+const {AddPost,DeletePost} = useUpdatePostContext();
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";
+  function Deletepost(delete_id) {
+    DeletePost(delete_id)
+    console.log("deleting...")
+    // console.log(data)
+    // Object.keys(data).forEach(function(id){
+    //   if (data[id] === id) {
+    //     delete data[id];
+    //   }
+    // });
+    
+      
+      // Object.filter = (obj, predicate) =>
+      // Object.fromEntries(Object.entries(obj).
+      //           filter(([key, value]) =>
+      //           predicate(value)));
+      
+      // let filtered =
+      //   Object.filter(postItem, item=>
+      //         item.id != post_id);
+      // console.log(filtered);
+      // setPostItem(filtered)
+  
+  
+    fetch(`https://chimes-api.vercel.app/api/v1/posts/${delete_id}`, {
+      method: "DELETE",
+    })
+    // .then(setTimeout(() => {
+    //   console.log('count decremented...')
+    //   // setCount((count) => count - 1)
+    // }, 1000));
+  }
   const increase = () => {
     setLikecount((likecount) => likecount + 1);
     console.log("increasing");
@@ -42,8 +64,6 @@ function Post(props) {
       }));
     }
   };
-  const [buttonPopup, setButtonPopup] = useState(false);
-  const [likecount, setLikecount] = useState(0);
   const [expand, setExpand] = useState({
     opens: false,
     window: "start",
@@ -61,7 +81,7 @@ function Post(props) {
           </div>
           <div
             className={`${buttonStyles}`}
-            onClick={() => Deletepost(props._id, props.setCount,props.data)}
+            onClick={() => Deletepost(props.id,props.data)}
           >
             <Close />
           </div>
@@ -118,7 +138,10 @@ function Post(props) {
         }`}
       >
         <div className="">
-          {win === "comment" ? <Comments /> : <Sharebox data={props} />}
+          {win === "comment" ? <Comments /> : 
+          // <Sharebox data={props} />
+          ""
+          }
         </div>
       </div>
     </div>

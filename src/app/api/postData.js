@@ -1,5 +1,5 @@
 
-function postData(linkdata,url) {
+function postData(item,url) {
     return new Promise((resolve, reject) => {
       fetch(url,{
         method:"POST",
@@ -7,10 +7,11 @@ function postData(linkdata,url) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "title": linkdata?.title,
-        "img": linkdata?.image,
-        "postTitle": linkdata?.description,
-        "link": linkdata?.url,
+        "id":item?.id,
+        "title": item?.title,
+        "img": item?.img,
+        "postTitle": item?.postTitle,
+        "link": item?.link,
       })
     }
       )
@@ -18,7 +19,7 @@ function postData(linkdata,url) {
       if (response.ok) {
         return response.json();
       } else {
-        console.log(linkdata?.url)
+        console.log(item?.url)
         console.log("post didnt add")
         // throw new Error("Post didnt happen.");
       }
