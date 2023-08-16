@@ -13,9 +13,10 @@ export default function Home() {
   useEffect(() => {
     console.log("rendering...");
     const url = `https://chimes-api.vercel.app/api/v1/posts`;
-    getData(url).then((data) => setPostItem(data?.posts));
+    // getData(url).then((data) => setPostItem(data?.posts));
+    console.log("new postitem")
     console.log(postItem);
-  }, [count]);
+  }, [postItem]);
   const darkTheme = useTheme();
   const toggleTheme = useUpdateTheme();
   return (
@@ -30,7 +31,7 @@ export default function Home() {
             hey
           </div>
 
-            <Feedgrid data={postItem} setCount={setCount} />
+            <Feedgrid data={postItem} />
 
         </div>
       {/* ) : (

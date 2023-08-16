@@ -4,7 +4,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import NewSidebar from "components/sidebar/newSidebar";
 import ThemeContextProvider from "utils/themeContext";
-import PostContext from "utils/postContext";
+import PostContextProvider from "utils/postContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -28,9 +28,9 @@ export default function Layout({ children }) {
             <NewSidebar />
           </div>
           <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
-          <PostContext>
+          <PostContextProvider>
             {children}
-        </PostContext>
+        </PostContextProvider>
           </div>
         </div>
         </ThemeContextProvider>

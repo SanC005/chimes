@@ -1,15 +1,16 @@
 import React from "react";
 import Post from "../post/post";
 import Addpost from "../post/addpost";
-// import { usePostContext } from "utils/postContext";
+import { useTheme, useUpdateTheme } from "utils/themeContext";
 
-function Feedgrid({ data,setCount,setData }) {
-  // const { postItem, setPostItem } = usePostContext();
+
+function Feedgrid({ data }) {
+  const darkTheme = useTheme();
+  const toggleTheme = useUpdateTheme();
   const post = data?.map((postData) => (
-    <li className="p-2" key={postData._id}>
+    <li className="p-2" key={postData.id}>
       <Post
-        setCount={setCount}
-        _id={postData._id}
+        id={postData.id}
         title={postData.title}
         img={postData.img}
         postTitle={postData.postTitle}
@@ -18,9 +19,9 @@ function Feedgrid({ data,setCount,setData }) {
     </li>
   ));
   return (
-    <div className="grid grid-cols-1 bg-cyan-500 list-none p-2 md:grid-cols-2 lg:grid-cols-3">
+    <div className={` ${darkTheme?"bg-purple-400":"bg-cyan-500"} grid grid-cols-1 list-none p-2 md:grid-cols-2 lg:grid-cols-3`}>
       <div className="p-2">
-        <Addpost setCount={setCount} data={data} setData={setData}/>
+        <Addpost data={data}/>
       </div>
       {post}
     </div>

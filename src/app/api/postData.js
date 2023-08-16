@@ -7,10 +7,11 @@ function postData(linkdata,url) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        "id":linkdata?.id,
         "title": linkdata?.title,
-        "img": linkdata?.image,
-        "postTitle": linkdata?.description,
-        "link": linkdata?.url,
+        "img": linkdata?.img,
+        "postTitle": linkdata?.postTitle,
+        "link": linkdata?.link,
       })
     }
       )
