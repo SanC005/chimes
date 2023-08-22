@@ -15,6 +15,7 @@ function Feedgrid({ data }) {
         link={postData.link}
         visibility={postData.visibility}
         bookmark={postData.bookmark}
+        like={postData.like}
       />
     </li>
   ));

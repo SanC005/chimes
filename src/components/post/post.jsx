@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Popup from "../popups/popup";
 import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
@@ -62,6 +62,10 @@ function Post({ bookmark, visibility, ...props }) {
   const changeBookmark = () => {
     UpdatePost(props.id,"bookmark")
   };
+  useEffect(() => {
+    setLike(props.like)
+
+  }, []);
   return (
     <div>
       <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col ">

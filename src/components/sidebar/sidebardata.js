@@ -29,9 +29,9 @@ export const sidebarEntries = [
   },
   {
     id: 5,
-    title: "Contact",
+    title: "Bookmarks",
     icon: "",
-    link: "/contact",
+    link: "/bookmark",
     slug: "",
   },
 ];

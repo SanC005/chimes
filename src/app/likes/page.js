@@ -2,25 +2,24 @@
 import getData from "app/api/getData";
 import Profile from "components/profile/profile";
 import Feedgrid from "components/public_feed/feedgrid";
-import { postDatas } from "components/public_feed/postdata";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Public() {
-  const [publicItem, setPublicItem] = useState([]);
+export default function Likes() {
+  const [LikesItem, setLikesItem] = useState([]);
   useEffect(() => {
     console.log("rendering...");
-    const url = `https://chimes-api.vercel.app/api/v1/public`;
+    const url = `https://chimes-api.vercel.app/api/v1/likes`;
     getData(url).then((data) => {
       console.log(data.posts)
-      setPublicItem(data?.posts)
+      setLikesItem(data?.posts)
       
     }
     );
   }, []);
   return (
-    <div>
+    <div className="text-white bg-red-600">
       <Profile />
-      <Feedgrid data={publicItem} />
+      <Feedgrid data={LikesItem} />
     </div>
   );
 }
