@@ -16,9 +16,16 @@ import { useUpdatePostContext } from "utils/postContext";
 
 function Post({ bookmark, visibility, ...props }) {
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [likecount, setLikecount] = useState(0);
-  const { AddPost, DeletePost } = useUpdatePostContext();
+  // const [likecount, setLikecount] = useState(0);
+  const [like, setLike] = useState(false);
+  const { AddPost, DeletePost,UpdatePost } = useUpdatePostContext();
+  const [expand, setExpand] = useState({
+    opens: false,
+    window: "start",
+  });
+  const win = expand.window;
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";
+  const btnprimary = "w-full border-lime-400 border hover:bg-green-500 focus:bg-black active:bg-green-700";
   function Deletepost(delete_id) {
     DeletePost(delete_id);
     console.log("deleting...");
@@ -26,10 +33,13 @@ function Post({ bookmark, visibility, ...props }) {
       method: "DELETE",
     });
   }
-  const increase = () => {
-    setLikecount((likecount) => likecount + 1);
-    console.log("increasing");
+  const toggleLike = () => {
+    setLike((like) => !like);
   };
+  // const increase = () => {
+  //   setLikecount((likecount) => likecount + 1);
+  //   console.log("increasing");
+  // };
   // const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
   const openShare = (e) => {
     if (e === expand.window) {
@@ -46,16 +56,11 @@ function Post({ bookmark, visibility, ...props }) {
       }));
     }
   };
-  const [expand, setExpand] = useState({
-    opens: false,
-    window: "start",
-  });
-  const win = expand.window;
   const changeVisibility = () => {
-    alert(visibility);
+    UpdatePost(props.id,"visibility")
   };
   const changeBookmark = () => {
-    alert(bookmark);
+    UpdatePost(props.id,"bookmark")
   };
   return (
     <div>
@@ -97,19 +102,20 @@ function Post({ bookmark, visibility, ...props }) {
         </div>
 
         <div className="flex justify-around bottom-0 cursor-pointer">
-          <div className="btn-primary rounded-bl-2xl " onClick={increase}>
-            {likecount} Likes
+          <div className={`${btnprimary} rounded-bl-2xl ${like?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`} onClick={() => toggleLike()}>
+            {/* {likecount} */}
+             {like?<div>Liked</div>:<div>Like!</div>}
             {/* <button className="w-full" onClick={increase}>{likecount} Likes</button> */}
           </div>
           <div
-            className="btn-primary"
+            className={`${btnprimary} ${(expand.opens && expand.window==="comment")?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`}
             name="comment"
             onClick={() => openShare("comment")}
           >
             Comment
           </div>
           <div
-            className="btn-primary rounded-br-2xl"
+            className={`${btnprimary} rounded-br-2xl ${(expand.opens && expand.window==="share")?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`}
             name="share"
             onClick={() => openShare("share")}
           >

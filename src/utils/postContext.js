@@ -15,6 +15,24 @@ export default function PostContextProvider({ children }) {
   function AddPost(item) {
     setPostItem((data) => [...data, item]);
   }
+  function UpdatePost(given_id,field) {
+    // objIndex = postItem.findIndex((obj => obj.id == given_id));
+    // postItem[objIndex].field = newvalue
+    const newState = postItem.map(obj => { 
+      if(field==="visibility"){
+        return (
+          obj.id === given_id? { ...obj, visibility:!obj.visibility } : obj
+        )
+      }
+      else if(field==="bookmark"){
+        return (
+          obj.id === given_id? { ...obj, bookmark:!obj.bookmark } : obj
+        )
+      }
+    }
+    );
+    setPostItem(newState)
+  }
   function DeletePost(delete_id) {
     const filteredpost = postItem.filter((item) => item.id !== delete_id);
     // setPostItem(filteredpost)
@@ -32,7 +50,7 @@ export default function PostContextProvider({ children }) {
   // }
   return (
     <PostItemContext.Provider value={{ postItem, setPostItem }}>
-      <updatePostContext.Provider value={{ AddPost, DeletePost }}>
+      <updatePostContext.Provider value={{ AddPost, DeletePost,UpdatePost }}>
         {children}
       </updatePostContext.Provider>
     </PostItemContext.Provider>

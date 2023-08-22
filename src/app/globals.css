@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 @layer components {
-  .btn-primary {
+  /* .btn-primary {
     @apply w-full border-lime-400 border hover:bg-green-500 focus:bg-black active:bg-green-700;
-  }
+  } */
 }
 :root {
   --foreground-rgb: 0, 0, 0;

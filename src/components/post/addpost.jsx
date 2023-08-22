@@ -9,6 +9,7 @@ function Addpost() {
   const [linktext, setLinkText] = useState("");
   const [linkdata, setLinkData] = useState({});
   const [toggleValue, setToggleValue] = useState(false);
+
   const [toggleBookmarkValue, setToggleBookmarkValue] = useState(false);
   const { postItem } = usePostContext();
   const { AddPost, DeletePost } = useUpdatePostContext();
@@ -29,6 +30,7 @@ function Addpost() {
         link: linkdata?.url || "no link available",
         visibility: toggleValue,
         bookmark: toggleBookmarkValue,
+        liked:false,
       };
       console.log("before");
       console.log(postItem);

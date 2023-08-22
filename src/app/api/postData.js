@@ -13,6 +13,7 @@ function postData(item, url) {
         link: item?.link,
         visibility: item?.visibility,
         bookmark: item?.bookmark,
+        liked:item?.liked,
       }),
     })
       .then((response) => {
