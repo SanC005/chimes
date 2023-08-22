@@ -4,45 +4,27 @@ import Popup from "../popups/popup";
 import Link from "next/link";
 import Sharebox from "components/popups/sharebox";
 import Comments from "components/popups/comments";
-import { BookmarkAdd, Close, Visibility } from "@mui/icons-material";
+import {
+  Bookmark,
+  BookmarkAdd,
+  BookmarkBorder,
+  Close,
+  Visibility,
+  VisibilityOff,
+} from "@mui/icons-material";
 import { useUpdatePostContext } from "utils/postContext";
 
-
-function Post(props) {
+function Post({ bookmark, visibility, ...props }) {
   const [buttonPopup, setButtonPopup] = useState(false);
-const [likecount, setLikecount] = useState(0);
-const {AddPost,DeletePost} = useUpdatePostContext();
+  const [likecount, setLikecount] = useState(0);
+  const { AddPost, DeletePost } = useUpdatePostContext();
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";
   function Deletepost(delete_id) {
-    DeletePost(delete_id)
-    console.log("deleting...")
-    // console.log(data)
-    // Object.keys(data).forEach(function(id){
-    //   if (data[id] === id) {
-    //     delete data[id];
-    //   }
-    // });
-    
-      
-      // Object.filter = (obj, predicate) =>
-      // Object.fromEntries(Object.entries(obj).
-      //           filter(([key, value]) =>
-      //           predicate(value)));
-      
-      // let filtered =
-      //   Object.filter(postItem, item=>
-      //         item.id != post_id);
-      // console.log(filtered);
-      // setPostItem(filtered)
-  
-  
+    DeletePost(delete_id);
+    console.log("deleting...");
     fetch(`https://chimes-api.vercel.app/api/v1/posts/${delete_id}`, {
       method: "DELETE",
-    })
-    // .then(setTimeout(() => {
-    //   console.log('count decremented...')
-    //   // setCount((count) => count - 1)
-    // }, 1000));
+    });
   }
   const increase = () => {
     setLikecount((likecount) => likecount + 1);
@@ -69,19 +51,27 @@ const {AddPost,DeletePost} = useUpdatePostContext();
     window: "start",
   });
   const win = expand.window;
+  const changeVisibility = () => {
+    alert(visibility);
+  };
+  const changeBookmark = () => {
+    alert(bookmark);
+  };
   return (
     <div>
       <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col ">
         <div className="flex justify-end gap-1">
-          <div className={`${buttonStyles}`}>
-            <Visibility />
+          <div className={`${buttonStyles}`} onClick={() => changeVisibility()}>
+            {/* <Visibility /> */}
+            {visibility ? <Visibility /> : <VisibilityOff />}
           </div>
-          <div className={`${buttonStyles}`}>
-            <BookmarkAdd />
+          <div className={`${buttonStyles}`} onClick={() => changeBookmark()}>
+            {/* <BookmarkAdd /> */}
+            {bookmark ? <Bookmark /> : <BookmarkBorder />}
           </div>
           <div
             className={`${buttonStyles}`}
-            onClick={() => Deletepost(props.id,props.data)}
+            onClick={() => Deletepost(props.id, props.data)}
           >
             <Close />
           </div>
@@ -138,10 +128,12 @@ const {AddPost,DeletePost} = useUpdatePostContext();
         }`}
       >
         <div className="">
-          {win === "comment" ? <Comments /> : 
-          // <Sharebox data={props} />
-          ""
-          }
+          {win === "comment" ? (
+            <Comments />
+          ) : (
+            // <Sharebox data={props} />
+            ""
+          )}
         </div>
       </div>
     </div>

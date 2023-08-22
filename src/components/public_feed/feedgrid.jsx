@@ -13,6 +13,8 @@ function Feedgrid({ data }) {
         img={postData.img}
         postTitle={postData.postTitle}
         link={postData.link}
+        visibility={postData.visibility}
+        bookmark={postData.bookmark}
       />
     </li>
   ));
