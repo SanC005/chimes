@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import {postData,fetchData} from "app/api/postData";
 import { usePostContext, useUpdatePostContext } from "utils/postContext";
 // import { getLinkPreview } from "link-preview-js";
@@ -7,46 +7,58 @@ import { usePostContext, useUpdatePostContext } from "utils/postContext";
 
 function Addpost() {
   const [linktext,setLinkText]= useState("");
-  const [linkdata,setLinkData]= useState({});
+  const [linkdata,setLinkData]= useState(true);
+  const [toggleValue,setToggleValue]= useState({});
   const { postItem} = usePostContext();
   const {AddPost,DeletePost} = useUpdatePostContext();
+  const isMounted = useRef(false);
+
   useEffect(() => {
-    //Adding to useContext
-    console.log("adding new post...")
-    const newitemlist = postItem
-    let item = { id:String(Math.random()),
-      title: linkdata?.title || "no title available",
-    img: linkdata?.image || "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    postTitle: linkdata?.description || "no description available",
-    link: linkdata?.url || "no link available"}
-    console.log("before")
-    console.log(postItem)
-    AddPost(item)
-    console.log("after")
-    console.log(postItem)
-    // console.log("item aara")
-    // console.log(item)
-    // console.log("above is item")
-    // console.log(postItem)
-    // newitemlist.push(item)
-    // console.log(newitemlist)
-    // setPostItem(newitemlist) //issue here
-    // console.log("this is item")
-    const url = `https://chimes-api.vercel.app/api/v1/posts`
-    postData(item,url)
-    // .then(setTimeout(() => {
-    //   console.log('count incremented...')
-    //   setCount((count) => count + 1)
-    // }, 1000));
+    if (isMounted.current) {
+          //Adding to useContext
+        console.log("adding new post...")
+        const newitemlist = postItem
+        let item = { id:String(Math.random()),
+          title: linkdata?.title || "no title available",
+        img: linkdata?.image || "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        postTitle: linkdata?.description || "no description available",
+        link: linkdata?.url || "no link available"}
+        console.log("before")
+        console.log(postItem)
+        AddPost(item)
+        console.log("after")
+        console.log(postItem)
+        // console.log("item aara")
+        // console.log(item)
+        // console.log("above is item")
+        // console.log(postItem)
+        // newitemlist.push(item)
+        // console.log(newitemlist)
+        // setPostItem(newitemlist) //issue here
+        // console.log("this is item")
+        const url = `https://chimes-api.vercel.app/api/v1/posts`
+        postData(item,url)
+        // .then(setTimeout(() => {
+        //   console.log('count incremented...')
+        //   setCount((count) => count + 1)
+        // }, 1000));
+    } else {
+      isMounted.current = true;
+    }
   },[linkdata])
   
   const changeLink = (e) => {
       setLinkText(e)
   }
+  const OnTheme = "bg-[#2196F3]"
+  const offTheme = "bg-[#ccc]"
+  const toggle = (e) => {
+      setToggleValue((toggleValue) => (!toggleValue))
+  }
   const addnew = async (e) => {
     e.preventDefault()
     // console.log("working")
-    await fetchData(`http://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`).then(function(result){
+    await fetchData(`https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`).then(function(result){
       console.log("fetching link...")
       
       // console.log(result)
@@ -67,13 +79,16 @@ function Addpost() {
     <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl hover:bg-green-500 active:bg-green-600">
       <div
         className="flex h-full justify-center items-center cursor-pointer text-black"
-        
       >
         {/* <AddIcon sx={{ fontSize: 180 }} /> */}
         <div>
           <form className="flex flex-col gap-3">
             <label className="">Link 
             <input className="mx-2"type="text" onChange={(e) => changeLink(e.target.value)} />
+            </label>
+            <label className="w-14 h-8 inline-block relative"> 
+                <input type="checkbox" className="" onClick={() => toggle()}></input>
+                <span className={`${toggleValue?OnTheme:offTheme} absolute top-0 left-0 right-0 bottom-0 cursor-pointer before:bg-white  before:h-7 before:w-7`}></span>
             </label>
             <button onClick={(e) => addnew(e)} className="bg-slate-400 m-1 p-1 rounded-md">Add</button>
           </form>
