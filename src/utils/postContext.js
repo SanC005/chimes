@@ -11,6 +11,7 @@ export function useUpdatePostContext() {
 }
 
 export default function PostContextProvider({ children }) {
+  
   const [postItem, setPostItem] = useState([]);
   function AddPost(item) {
     setPostItem((data) => [...data, item]);

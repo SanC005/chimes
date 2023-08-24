@@ -15,6 +15,7 @@ import {
 import { useUpdatePostContext } from "utils/postContext";
 
 function Post({ bookmark, visibility, ...props }) {
+  //STATES DEFINED HERE
   const [buttonPopup, setButtonPopup] = useState(false);
   // const [likecount, setLikecount] = useState(0);
   const [like, setLike] = useState(false);
@@ -23,9 +24,17 @@ function Post({ bookmark, visibility, ...props }) {
     opens: false,
     window: "start",
   });
+
+
+  //VARIABLES DEFINED HERE
   const win = expand.window;
   const buttonStyles = "hover:bg-green-500 active:bg-green-700 cursor-pointer";
-  const btnprimary = "w-full border-lime-400 border hover:bg-green-500 focus:bg-black active:bg-green-700";
+  const btnprimary = "w-full border-lime-400 border";
+  const bluebg = "bg-blue-500 hover:bg-blue-600 focus:bg-blue-800 active:bg-blue-800"
+  const greenbg = "bg-green-400 hover:bg-green-500 focus:bg-green-700 active:bg-green-700"
+
+
+  //FUNCTIONS DEFINED HERE
   function Deletepost(delete_id) {
     DeletePost(delete_id);
     console.log("deleting...");
@@ -106,20 +115,20 @@ function Post({ bookmark, visibility, ...props }) {
         </div>
 
         <div className="flex justify-around bottom-0 cursor-pointer">
-          <div className={`${btnprimary} rounded-bl-2xl ${like?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`} onClick={() => toggleLike()}>
+          <div className={`${btnprimary} rounded-bl-2xl ${like?`${bluebg}`:`${greenbg}`}`} onClick={() => toggleLike()}>
             {/* {likecount} */}
              {like?<div>Liked</div>:<div>Like!</div>}
             {/* <button className="w-full" onClick={increase}>{likecount} Likes</button> */}
           </div>
           <div
-            className={`${btnprimary} ${(expand.opens && expand.window==="comment")?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`}
+            className={`${btnprimary} ${(expand.opens && expand.window==="comment")?`${bluebg}`:`${greenbg}`}`}
             name="comment"
             onClick={() => openShare("comment")}
           >
             Comment
           </div>
           <div
-            className={`${btnprimary} rounded-br-2xl ${(expand.opens && expand.window==="share")?`bg-blue-500 hover:bg-blue-600 active:bg-blue-800`:``}`}
+            className={`${btnprimary} rounded-br-2xl ${(expand.opens && expand.window==="share")?`${bluebg}`:`${greenbg}`}`}
             name="share"
             onClick={() => openShare("share")}
           >

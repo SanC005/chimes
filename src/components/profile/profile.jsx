@@ -6,6 +6,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import Desc from "./description/desc";
 import { CheckBox } from "@mui/icons-material";
 function Profile() {
+  //VARIABLES DEFINED HERE
+  const lightbg = ""
+  const darkbg = "hover:bg-white hover:text-black active:bg-white active:text-black"
   const [person, setPerson] = useState({
     icon: "https://imgv3.fotor.com/images/blog-richtext-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
     username: "Username",
@@ -27,7 +30,6 @@ function Profile() {
       }))
   }
     
-  function changeIcon() {}
 
   return (
     <div className="bg-cyan-700">
@@ -68,11 +70,11 @@ function Profile() {
       </div>
       <div className="flex justify-evenly text-2xl text-center bg-black">
         <Link className="w-full" href="/public">
-          <div className=" hover:bg-white hover:text-black w-full">Public</div>
+          <div className={`${darkbg} w-full`}>Public</div>
         </Link>
 
         <Link className="w-full" href="/private">
-          <div className=" hover:bg-white hover:text-black w-full">Private</div>
+          <div className={`${darkbg} w-full`}>Private</div>
         </Link>
       </div>
     </div>
