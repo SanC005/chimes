@@ -38,7 +38,7 @@ function Post({ bookmark, visibility, ...props }) {
   function Deletepost(delete_id) {
     DeletePost(delete_id);
     console.log("deleting...");
-    fetch(`https://chimes-api.vercel.app/api/v1/posts/${delete_id}`, {
+    fetch(`https://chimes-api.vercel.app/api/v1/home/${delete_id}`, {
       method: "DELETE",
     });
   }
