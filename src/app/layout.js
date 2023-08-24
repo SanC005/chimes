@@ -27,11 +27,11 @@ export default function Layout({ children }) {
           <div className="bg-sky-950 flex flex-col invisible md:visible">
             <NewSidebar />
           </div>
-          <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
           <PostContextProvider>
+          <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
             {children}
-        </PostContextProvider>
           </div>
+        </PostContextProvider>
         </div>
         </ThemeContextProvider>
       </body>

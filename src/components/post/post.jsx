@@ -13,6 +13,7 @@ import {
   VisibilityOff,
 } from "@mui/icons-material";
 import { useUpdatePostContext } from "utils/postContext";
+import UpdateData from "app/api/updateData";
 
 function Post({ bookmark, visibility, ...props }) {
   //STATES DEFINED HERE
@@ -42,6 +43,9 @@ function Post({ bookmark, visibility, ...props }) {
       method: "DELETE",
     });
   }
+  function UpdatingDBPost(id,item){
+      UpdateData(item,`https://chimes-api.vercel.app/api/v1/home/${id}`)
+  }
   const toggleLike = () => {
     setLike((like) => !like);
   };
@@ -67,9 +71,12 @@ function Post({ bookmark, visibility, ...props }) {
   };
   const changeVisibility = () => {
     UpdatePost(props.id,"visibility")
+    UpdatingDBPost(props.id,{visibility:!visibility})
+    
   };
   const changeBookmark = () => {
     UpdatePost(props.id,"bookmark")
+    UpdatingDBPost(props.id,{bookmark:!bookmark})
   };
   useEffect(() => {
     setLike(props.like)
