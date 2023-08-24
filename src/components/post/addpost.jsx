@@ -37,7 +37,7 @@ function Addpost() {
       AddPost(item);
       console.log("after");
       console.log(postItem);
-      const url = `https://chimes-api.vercel.app/api/v1/posts`;
+      const url = `https://chimes-api.vercel.app/api/v1/home`;
       postData(item, url);
     } else {
       isMounted.current = true;

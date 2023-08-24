@@ -3,16 +3,23 @@ import React, { createContext, useContext, useState } from "react";
 
 const PostItemContext = createContext();
 const updatePostContext = createContext();
+const activePageContext = createContext();
+export function useActivepage(){
+  return useContext(activePageContext);
+}
 export function usePostContext() {
   return useContext(PostItemContext);
 }
 export function useUpdatePostContext() {
   return useContext(updatePostContext);
 }
-
 export default function PostContextProvider({ children }) {
-  
+  //Index for page active 
+  const [activePage,setActivePage] = useState("Home");
   const [postItem, setPostItem] = useState([]);
+  function setNewActivePage(page){
+    setActivePage(page);
+  }
   function AddPost(item) {
     setPostItem((data) => [...data, item]);
   }
@@ -52,7 +59,9 @@ export default function PostContextProvider({ children }) {
   return (
     <PostItemContext.Provider value={{ postItem, setPostItem }}>
       <updatePostContext.Provider value={{ AddPost, DeletePost,UpdatePost }}>
+        <activePageContext.Provider value={{activePage,setNewActivePage}}>
         {children}
+        </activePageContext.Provider>
       </updatePostContext.Provider>
     </PostItemContext.Provider>
   );
