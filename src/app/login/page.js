@@ -8,14 +8,14 @@ function LoginPage() {
       setLog((log) => (!log))
   }
   return (
-    <div className="bg-sky-600 h-screen flex justify-center">
+    <div className="bg-white h-screen flex justify-center">
       <div className="flex flex-col gap-5 mt-16">
       <div className="">
         {log ? <Login/>:<SignUp/>}
       </div>
-      <div>
+      {/* <div>
         <button className="bg-slate-800" onClick={Logging}>LOG IN</button>
-      </div>
+      </div> */}
 
       </div>
       

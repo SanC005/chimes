@@ -25,16 +25,16 @@ const Navbar = () => {
             ></img>
           </div>
         </Link>
-        <div className="flex items-center w-1/2 min-w-[200px] shrink-0 justify-center bg-cyan-900 rounded-md">
-          
+        <div className="flex items-center w-1/2 min-w-[240px] lg:min-w-[360px] shrink-0 justify-center rounded-md">
+        
+          <form className="flex">   
+              {/* <label className="m-2 hidden xl:block">Search</label> */}
+              <div className="flex items-center">
+              <input placeholder="search for posts..." className="mx-1 text-black rounded-md opacity-90 lg:w-[300px]"></input>
+              <Search className="bg-blue-600 hover:bg-sky-600 active:bg-sky-300 h-9 w-9 m-1 rounded-md ring-1 ring-blue-600"/>
 
-<form>   
-    <label className="m-2 hidden xl:inline-block">Search</label>
-    <input placeholder="search posts" className="mx-1 text-black"></input>
-    <Search className="hover:bg-cyan-950 active:bg-gray-500"/>
-</form>
-
-
+              </div>
+          </form>
 
         </div>
       </div>

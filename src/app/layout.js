@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import NewSidebar from "components/sidebar/newSidebar";
 import ThemeContextProvider from "utils/themeContext";
 import PostContextProvider from "utils/postContext";
+import Footer from "components/footer/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -30,6 +31,7 @@ export default function Layout({ children }) {
           <PostContextProvider>
           <div className="absolute start-0 end-0 md:start-56 md:end-0 lg:start-56 lg:end-0">
             {children}
+            {/* <Footer/> */}
           </div>
         </PostContextProvider>
         </div>

@@ -2,8 +2,8 @@ import React from "react";
 import Post from "../post/post";
 import Addpost from "../post/addpost";
 
-
-
+//grid, grid-gap 1rem, gridtemplcol(auto-fit,minmax(250,1fr))
+//container - max-width-960, margin l&r-auto
 function Feedgrid({ data}) {
   const post = data?.map((postData) => (
     <li className="p-2" key={postData.id}>
@@ -16,6 +16,7 @@ function Feedgrid({ data}) {
         visibility={postData.visibility}
         bookmark={postData.bookmark}
         like={postData.like}
+        
       />
     </li>
   ));
