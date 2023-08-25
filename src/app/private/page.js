@@ -20,7 +20,7 @@ export default function Private() {
     // );
     let newPrivate = postItem.filter((item) => item.visibility===false)
     setPrivateItem(newPrivate)
-  }, []);
+  }, [postItem]);
   return (
     <div className="text-white bg-red-600">
       <Profile />

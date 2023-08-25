@@ -37,6 +37,11 @@ export default function PostContextProvider({ children }) {
           obj.id === given_id? { ...obj, bookmark:!obj.bookmark } : obj
         )
       }
+      else if(field==="like"){
+        return (
+          obj.id === given_id? { ...obj, like:!obj.like } : obj
+        )
+      }
     }
     );
     setPostItem(newState)

@@ -33,14 +33,14 @@ export default function Home() {
       <Profile />
       {/* {postItem ? ( */}
         <div>
-          <div
+          {/* <div
             className={darkTheme ? `bg-black` : `bg-red-500`}
             onClick={toggleTheme}
           >
             hey
-          </div>
+          </div> */}
 
-            <Feedgrid data={postItem} />
+            <Feedgrid data={postItem}/>
 
         </div>
       {/* ) : (

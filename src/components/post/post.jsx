@@ -15,11 +15,11 @@ import {
 import { useUpdatePostContext } from "utils/postContext";
 import UpdateData from "app/api/updateData";
 
-function Post({ bookmark, visibility, ...props }) {
+function Post({ like,bookmark, visibility, ...props }) {
   //STATES DEFINED HERE
   const [buttonPopup, setButtonPopup] = useState(false);
   // const [likecount, setLikecount] = useState(0);
-  const [like, setLike] = useState(false);
+  // const [like, setLike] = useState(false);
   const { AddPost, DeletePost,UpdatePost } = useUpdatePostContext();
   const [expand, setExpand] = useState({
     opens: false,
@@ -46,28 +46,30 @@ function Post({ bookmark, visibility, ...props }) {
   function UpdatingDBPost(id,item){
       UpdateData(item,`https://chimes-api.vercel.app/api/v1/home/${id}`)
   }
-  const toggleLike = () => {
-    setLike((like) => !like);
-  };
   // const increase = () => {
-  //   setLikecount((likecount) => likecount + 1);
-  //   console.log("increasing");
-  // };
-  // const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
-  const openShare = (e) => {
-    if (e === expand.window) {
-      setExpand((prev) => ({
-        ...prev,
-        opens: false,
-        window: "empty",
-      }));
-    } else {
-      setExpand((prev) => ({
-        ...prev,
-        opens: true,
-        window: e,
-      }));
-    }
+    //   setLikecount((likecount) => likecount + 1);
+    //   console.log("increasing");
+    // };
+    // const openPopup = () => setButtonPopup((buttonPopup) => !buttonPopup);
+    const openShare = (e) => {
+      if (e === expand.window) {
+        setExpand((prev) => ({
+          ...prev,
+          opens: false,
+          window: "empty",
+        }));
+      } else {
+        setExpand((prev) => ({
+          ...prev,
+          opens: true,
+          window: e,
+        }));
+      }
+    };
+  const toggleLike = () => {
+    console.log(like)
+    UpdatePost(props.id,"like")
+    UpdatingDBPost(props.id,{like:!like})
   };
   const changeVisibility = () => {
     UpdatePost(props.id,"visibility")
@@ -78,10 +80,10 @@ function Post({ bookmark, visibility, ...props }) {
     UpdatePost(props.id,"bookmark")
     UpdatingDBPost(props.id,{bookmark:!bookmark})
   };
-  useEffect(() => {
-    setLike(props.like)
+  // useEffect(() => {
+    
 
-  }, []);
+  // }, []);
   return (
     <div>
       <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col ">

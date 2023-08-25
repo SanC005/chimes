@@ -4,7 +4,7 @@ import Addpost from "../post/addpost";
 
 
 
-function Feedgrid({ data }) {
+function Feedgrid({ data}) {
   const post = data?.map((postData) => (
     <li className="p-2" key={postData.id}>
       <Post
