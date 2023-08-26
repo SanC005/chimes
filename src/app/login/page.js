@@ -13,9 +13,9 @@ function LoginPage() {
       <div className="">
         {log ? <Login/>:<SignUp/>}
       </div>
-      {/* <div>
+      <div>
         <button className="bg-slate-800" onClick={Logging}>LOG IN</button>
-      </div> */}
+      </div>
 
       </div>
       

@@ -42,7 +42,7 @@ function fetchData(url) {
           return response.json();
         } else {
           console.log("error while fetching");
-          throw new Error("Network response was not ok.");
+          throw new Error("error while fetching the data.");
         }
       })
       .then((data) => {

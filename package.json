@@ -15,9 +15,11 @@
     "@mui/material": "^5.14.0",
     "@tailwindcss/forms": "^0.5.5",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "encoding": "^0.1.13",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "jsonwebtoken": "^9.0.1",
     "link-preview-js": "^3.0.4",
     "next": "^13.4.13-canary.0",
     "postcss": "8.4.26",
@@ -26,5 +28,8 @@
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-share": "^4.4.1",
     "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2"
   }
 }

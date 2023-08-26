@@ -62,7 +62,7 @@ function Profile() {
                 </div>
               )}
             </div>
-            <div className="mt-2 text-slate-500 text-center md:text-left">
+            <div className="mt-2 text-slate-500 flex justify-center">
               <Desc text={person.description} trigger={buttonEdit} changeText={changeText}/>
             </div>
           </div>

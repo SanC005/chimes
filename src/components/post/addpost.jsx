@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { postData, fetchData } from "app/api/postData";
 import { usePostContext, useUpdatePostContext } from "utils/postContext";
+import { Close } from "@mui/icons-material";
 // import { getLinkPreview } from "link-preview-js";
 // import AddIcon from "@mui/icons-material/Add";
 
@@ -9,7 +10,7 @@ function Addpost() {
   const [linktext, setLinkText] = useState("");
   const [linkdata, setLinkData] = useState({});
   const [toggleValue, setToggleValue] = useState(false);
-
+  const [error,setError]=useState(false);
   const [toggleBookmarkValue, setToggleBookmarkValue] = useState(false);
   const { postItem } = usePostContext();
   const { AddPost, DeletePost } = useUpdatePostContext();
@@ -62,24 +63,33 @@ function Addpost() {
       `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`
     ).then(function (result) {
       console.log("fetching link...");
+      setError(false)
       setLinkData(result);
-    });
+    }).catch(() => setError(true));
   };
+  const Clear = () => {
+    document.querySelector('#addLinkInput').value=''
+    setLinkText("")
+  }
   return (
     <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl hover:bg-green-500 ">
       <div className="flex h-full justify-center items-center cursor-pointer text-black">
         {/* <AddIcon sx={{ fontSize: 180 }} /> */}
         <div>
           <form className="flex flex-col gap-3">
+            <div className="flex items-center">
+
+              <div className="font-bold git">Link</div>
             <label className="">
-              Link
-              <input
+              <input id="addLinkInput"
                 className="mx-2"
                 type="text"
                 onChange={(e) => changeLink(e.target.value)}
               />
             </label>
-
+            <div className="bg-gray-400 p-2 rounded-md" onClick={() => Clear()}><Close/></div>
+            </div>
+            
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
@@ -115,6 +125,7 @@ function Addpost() {
             >
               Add
             </button>
+            {error?<div className="text-red-600">Preview for the url is not available</div>:''}
           </form>
         </div>
       </div>
