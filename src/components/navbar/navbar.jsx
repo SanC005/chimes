@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className="bg-blue-400 w-full h-16 z-20 flex justify-between fixed">
       <div className="w-full flex justify-between">
         <Link href={"/"}>
-          <div className="px-4">
+          <div className="px-2  h-full rounded-full ">
             <img
               src="https://cdn-icons-png.flaticon.com/128/7096/7096707.png"
               height={60}

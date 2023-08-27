@@ -60,7 +60,7 @@ function Addpost() {
     e.preventDefault();
     // console.log("working")
     await fetchData(
-      `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`
+      // `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`
     ).then(function (result) {
       console.log("fetching link...");
       setError(false)
@@ -75,21 +75,21 @@ function Addpost() {
     <div className="bg-green-400 text-center max-w-md m-auto w-full h-80 rounded-2xl hover:bg-green-500 ">
       <div className="flex h-full justify-center items-center cursor-pointer text-black">
         {/* <AddIcon sx={{ fontSize: 180 }} /> */}
-        <div>
-          <form className="flex flex-col gap-3">
-            <div className="flex items-center">
+        <div className="w-11/12 lg:w-full ">
+          <form className="flex flex-col gap-4">
+            <div className="flex items-center justify-center px-1 gap-1 ">
 
-              <div className="font-bold git">Link</div>
-            <label className="">
+              <div className="font-bold">Link</div>
+
               <input id="addLinkInput"
-                className="mx-2"
+                className="block min-w-0"
                 type="text"
                 onChange={(e) => changeLink(e.target.value)}
               />
-            </label>
+
             <div className="bg-gray-400 p-2 rounded-md" onClick={() => Clear()}><Close/></div>
             </div>
-            
+            <div className="flex flex-col gap-3  w-[280px] m-auto overflow-hidden">
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
@@ -102,6 +102,7 @@ function Addpost() {
                 {toggleValue ? <div>Public</div> : <div>Private</div>}
               </span>
             </label>
+
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
@@ -114,6 +115,11 @@ function Addpost() {
                 Add to Bookmarks
               </span>
             </label>
+            </div>
+            <div>
+
+            </div>
+
 
             {/* <label className="w-14 h-8 inline-block relative"> 
                 <input type="checkbox" className="" onClick={() => toggleVisibility()}></input>
@@ -121,7 +127,7 @@ function Addpost() {
             </label> */}
             <button
               onClick={(e) => addnew(e)}
-              className="bg-slate-400 m-1 p-1 rounded-md"
+              className="bg-slate-400 mx-auto p-1 rounded-md w-2/3"
             >
               Add
             </button>

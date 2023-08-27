@@ -103,6 +103,8 @@ function Post({ like,bookmark, visibility, ...props }) {
             <Close />
           </div>
         </div>
+
+
         <div className="h-16 text-xl truncate">{props.title}</div>
         <Link href={props.link} target="_blank" rel="noopener noreferrer">
           <div className="flex justify-around h-full">
@@ -115,13 +117,14 @@ function Post({ like,bookmark, visibility, ...props }) {
           </div>
         </Link>
         <div className="flex flex-col">
-          <div className="h-8 text-sm truncate ">{props.postTitle}</div>
-          <div className="h-8 p-2 text-sm hover:text-gray-200 active:text-gray-500">
+          <div className="h-8 text-sm truncate px-2">{props.postTitle}</div>
+          <div className="h-8 p-2 text-sm hover:text-gray-200 active:text-gray-500 truncate">
             <Link href={props.link} target="_blank" rel="noopener noreferrer">
               {props.link}
             </Link>
           </div>
         </div>
+
 
         <div className="flex justify-around bottom-0 cursor-pointer">
           <div className={`${btnprimary} rounded-bl-2xl ${like?`${bluebg}`:`${greenbg}`}`} onClick={() => toggleLike()}>
