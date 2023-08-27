@@ -31,7 +31,7 @@ const Navbar = () => {
               {/* <label className="m-2 hidden xl:block">Search</label> */}
               <div className="flex items-center">
               <input placeholder="search for posts..." className="w-[180px] mx-1 text-black rounded-md opacity-90 lg:w-[300px]"></input>
-              <Search className="bg-blue-600 hover:bg-sky-600 active:bg-sky-300 h-9 w-9 m-1 rounded-md ring-1 ring-blue-600"/>
+              <Search fontSize="large" className=" bg-blue-600 hover:bg-sky-600 active:bg-sky-300 m-1 rounded-md ring-1 ring-blue-600"/>
 
               </div>
           </form>
