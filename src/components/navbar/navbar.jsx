@@ -12,8 +12,14 @@ const MENU_LIST = [
   { text: "Login", href: "/login" },
 ];
 const Navbar = () => {
+  const [hamMenu,sethamMenu] = useState(false);
+  const openMenu = () => {
+      sethamMenu((hamMenu) => !hamMenu)
+  
+  }
   return (
-    <div className="bg-blue-400 w-full h-16 z-20 flex justify-between fixed">
+    <div className="flex flex-col">
+    <div className={`bg-blue-400 w-full h-16 z-20 flex justify-between fixed`}>
       <div className="w-full flex justify-between">
         <Link href={"/"}>
           <div className="px-2  h-full rounded-full ">
@@ -45,9 +51,17 @@ const Navbar = () => {
           </div>
         ))}
       </div>
-      <div className="p-3 md:hidden">
+      <div className="p-3 md:hidden" onClick={() => openMenu()}>
         <MenuIcon fontSize="large" />
       </div>
+    </div>
+    <div className={`mt-16 w-full fixed bg-blue-600 z-20 ${hamMenu?`visible`:`hidden`}`}>
+    {MENU_LIST.map((menu) => (
+          <div key={menu.text} >
+            <NavItem {...menu} />
+          </div>
+        ))}
+    </div>
     </div>
   );
 };

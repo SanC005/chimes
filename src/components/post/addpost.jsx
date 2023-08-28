@@ -60,7 +60,7 @@ function Addpost() {
     e.preventDefault();
     // console.log("working")
     await fetchData(
-      // `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`
+      `https://api.linkpreview.net/?key=${process.env.NEXT_PUBLIC_PREVIEW_API_KEY}&q=${linktext}`
     ).then(function (result) {
       console.log("fetching link...");
       setError(false)
