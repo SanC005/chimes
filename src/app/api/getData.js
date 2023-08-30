@@ -2,7 +2,12 @@ import React from "react";
 
 export default function getData(url) {
   return new Promise((resolve, reject) => {
-    fetch(url)
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
       .then((response) => {
         if (response.ok) {
           console.log("data is coming...");

@@ -1,22 +1,22 @@
-import React from "react";
+import { postUser } from "app/api/postData";
+import React, { useState } from "react";
 
 function SignUp() {
-  // async function createAccount(){
-  //   // or [name-email]
-  //   const useremail = document.querySelector("#email").value.toString()
-  //   const password = document.querySelector("#password").value.toString()
-  //   axios.post()
-  // }
+  // const [signUpDetails,setSignUpDetails] = useState({})
+  const getDetails = (e) => {
+    e.preventDefault();
+    const emailInput = document.querySelector('#email').value
+    const usernameInput = document.querySelector('#username').value
+    const passwordInput = document.querySelector('#password').value
+    // setSignUpDetails({username:`${usernameInput}`,email:`${emailInput}`,password:`${passwordInput}`})
+    // console.log(signUpDetails)
+    const url = `https://chimes-api.vercel.app/api/v2/auth/register`
+    const item = {username:`${usernameInput}`,email:`${emailInput}`,password:`${passwordInput}`}
+    postUser(item,url)
+  }
   return (
     <div className="">
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
+      
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
           <img
@@ -30,7 +30,25 @@ function SignUp() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" action="" method="POST">
+            <div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                  UserName
+                </label>
+                
+              </div>
+              <div className="mt-2">
+                <input
+                  id="username"
+                  name="username"
+                  type="username"
+                  autoComplete="current-username"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -70,6 +88,7 @@ function SignUp() {
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={(e) => getDetails(e)}
               >
                 Sign up
               </button>

@@ -13,7 +13,7 @@ export default function Home() {
   const {AddPost,DeletePost} = useUpdatePostContext();
   useEffect(() => {
     console.log("rendering...");
-    const url = `https://chimes-api.vercel.app/api/v1/home`;
+    const url = `https://chimes-api.vercel.app/api/v2/posts/home`;
     getData(url).then((data) => {
       console.log(data.posts)
       setPostItem(data?.posts)

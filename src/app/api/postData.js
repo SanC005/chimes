@@ -34,6 +34,35 @@ function postData(item, url) {
       });
   });
 }
+function postUser(item, url) {
+  return new Promise((resolve, reject) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        item
+      ),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.log(JSON.stringify(item));
+          console.log("user didnt add");
+          // throw new Error("Post didnt happen.");
+        }
+      })
+      .then((data) => {
+        resolve(data);
+      })
+      // .then(()=> setCount((count) => (count+1)))
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
 function fetchData(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
@@ -53,4 +82,4 @@ function fetchData(url) {
       });
   });
 }
-export { postData, fetchData };
+export { postData, fetchData,postUser };
