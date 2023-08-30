@@ -1,4 +1,5 @@
 import { postUser } from "app/api/postData";
+import { redirect } from 'next/navigation';
 import React, { useState } from "react";
 
 function SignUp() {
@@ -13,6 +14,7 @@ function SignUp() {
     const url = `https://chimes-api.vercel.app/api/v2/auth/register`
     const item = {username:`${usernameInput}`,email:`${emailInput}`,password:`${passwordInput}`}
     postUser(item,url)
+    alert('you have successfully signed up')
   }
   return (
     <div className="">
@@ -97,7 +99,7 @@ function SignUp() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already have an account?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <a href="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Log in!
             </a>
           </p>

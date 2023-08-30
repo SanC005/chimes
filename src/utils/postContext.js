@@ -21,7 +21,7 @@ export default function PostContextProvider({ children }) {
     setActivePage(page);
   }
   function AddPost(item) {
-    setPostItem((data) => [...data, item]);
+    setPostItem((data) => [item,...data || []]);
   }
   function UpdatePost(given_id,field) {
     // objIndex = postItem.findIndex((obj => obj.id == given_id));
@@ -29,17 +29,17 @@ export default function PostContextProvider({ children }) {
     const newState = postItem.map(obj => { 
       if(field==="visibility"){
         return (
-          obj.id === given_id? { ...obj, visibility:!obj.visibility } : obj
+          obj.temp_id === given_id? { ...obj, visibility:!obj.visibility } : obj
         )
       }
       else if(field==="bookmark"){
         return (
-          obj.id === given_id? { ...obj, bookmark:!obj.bookmark } : obj
+          obj.temp_id === given_id? { ...obj, bookmark:!obj.bookmark } : obj
         )
       }
       else if(field==="like"){
         return (
-          obj.id === given_id? { ...obj, like:!obj.like } : obj
+          obj.temp_id === given_id? { ...obj, like:!obj.like } : obj
         )
       }
     }
@@ -47,7 +47,7 @@ export default function PostContextProvider({ children }) {
     setPostItem(newState)
   }
   function DeletePost(delete_id) {
-    const filteredpost = postItem.filter((item) => item.id !== delete_id);
+    const filteredpost = postItem.filter((item) => item.temp_id !== delete_id);
     // setPostItem(filteredpost)
     setPostItem(filteredpost);
   }

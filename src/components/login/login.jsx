@@ -1,17 +1,29 @@
 import { postUser } from 'app/api/postData';
+import { redirect } from 'next/navigation';
 import React from 'react'
 
 function Login() {
-  const getLogDetails = (e) => {
+  const getLogDetails = async (e) => {
     e.preventDefault();
-    const emailInput = document.querySelector('#email').value
+    const email = document.querySelector('#email').value
     // const usernameInput = document.querySelector('#username').value
-    const passwordInput = document.querySelector('#password').value
+    const password = document.querySelector('#password').value
     // setSignUpDetails({username:`${usernameInput}`,email:`${emailInput}`,password:`${passwordInput}`})
     // console.log(signUpDetails)
-    const url = `https://chimes-api.vercel.app/api/v2/auth/login`
-    const item = {email:`${emailInput}`,password:`${passwordInput}`}
-    postUser(item,url)
+    try {
+      const url = `https://chimes-api.vercel.app/api/v2/auth/login`
+      const item = {email,password}
+      const {user,token} = await postUser(item,url)
+      console.log(user)
+      console.log(token)
+      localStorage.setItem('username', user.username)
+      localStorage.setItem('email', email)
+      localStorage.setItem('token', token)
+      alert('successfully logged in')
+    } catch (error) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+    }
   }
   return (
     <div className="">
@@ -81,7 +93,7 @@ function Login() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Do not have an account?{' '}
-            <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
               Register Now!
             </a>
           </p>

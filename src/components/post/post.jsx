@@ -39,12 +39,17 @@ function Post({ like,bookmark, visibility, ...props }) {
   function Deletepost(delete_id) {
     DeletePost(delete_id);
     console.log("deleting...");
-    fetch(`https://chimes-api.vercel.app/api/v1/home/${delete_id}`, {
+    const token = localStorage.getItem('token')
+    fetch(`https://chimes-api.vercel.app/api/v2/posts/home/${delete_id}`, {
       method: "DELETE",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
     });
   }
   function UpdatingDBPost(id,item){
-      UpdateData(item,`https://chimes-api.vercel.app/api/v1/home/${id}`)
+    const token = localStorage.getItem('token')
+      UpdateData(item,`https://chimes-api.vercel.app/api/v2/posts/home/${id}`,token)
   }
   // const increase = () => {
     //   setLikecount((likecount) => likecount + 1);
@@ -67,18 +72,17 @@ function Post({ like,bookmark, visibility, ...props }) {
       }
     };
   const toggleLike = () => {
-    console.log(like)
-    UpdatePost(props.id,"like")
-    UpdatingDBPost(props.id,{like:!like})
+    UpdatePost(props.temp_id,"like")
+    UpdatingDBPost(props.temp_id,{like:!like})
   };
   const changeVisibility = () => {
-    UpdatePost(props.id,"visibility")
-    UpdatingDBPost(props.id,{visibility:!visibility})
+    UpdatePost(props.temp_id,"visibility")
+    UpdatingDBPost(props.temp_id,{visibility:!visibility})
     
   };
   const changeBookmark = () => {
-    UpdatePost(props.id,"bookmark")
-    UpdatingDBPost(props.id,{bookmark:!bookmark})
+    UpdatePost(props.temp_id,"bookmark")
+    UpdatingDBPost(props.temp_id,{bookmark:!bookmark})
   };
   // useEffect(() => {
     
@@ -98,7 +102,7 @@ function Post({ like,bookmark, visibility, ...props }) {
           </div>
           <div
             className={`${buttonStyles}`}
-            onClick={() => Deletepost(props.id, props.data)}
+            onClick={() => Deletepost(props.temp_id, props.data)}
           >
             <Close />
           </div>

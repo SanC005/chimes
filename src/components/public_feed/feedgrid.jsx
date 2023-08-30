@@ -6,9 +6,10 @@ import Addpost from "../post/addpost";
 //container - max-width-960, margin l&r-auto
 function Feedgrid({ data}) {
   const post = data?.map((postData) => (
-    <li className="p-2" key={postData.id}>
+    <li className="p-2" key={postData.temp_id}>
       <Post
-        id={postData.id}
+        _id = {postData._id}
+        temp_id={postData.temp_id}
         title={postData.title}
         img={postData.img}
         postTitle={postData.postTitle}

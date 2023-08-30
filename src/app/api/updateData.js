@@ -1,9 +1,10 @@
-export default function UpdateData(item, url) {
+export default function UpdateData(item, url,token) {
     return new Promise((resolve, reject) => {
       fetch(url, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(item),
       })

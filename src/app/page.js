@@ -7,15 +7,20 @@ import getData from "./api/getData";
 import { useTheme, useUpdateTheme } from "utils/themeContext";
 import { usePostContext } from "utils/postContext";
 import { useUpdatePostContext } from "utils/postContext";
+import Router from "next/router";
 
 export default function Home() {
   const { postItem,setPostItem } = usePostContext();
   const {AddPost,DeletePost} = useUpdatePostContext();
+
+
   useEffect(() => {
     console.log("rendering...");
+    const token = localStorage.getItem('token')
     const url = `https://chimes-api.vercel.app/api/v2/posts/home`;
-    getData(url).then((data) => {
-      console.log(data.posts)
+    getData(url,token).then((data) => {
+      console.log("this is the data")
+      console.log(data?.posts)
       setPostItem(data?.posts)
       // data?.map((ele) => console.log(ele.id))
       // .forEach(element => {

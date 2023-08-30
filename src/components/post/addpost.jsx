@@ -22,7 +22,7 @@ function Addpost() {
       console.log("adding new post...");
       const newitemlist = postItem;
       let item = {
-        id: String(Math.random()),
+        temp_id: String(Math.random()),
         title: linkdata?.title || "no title available",
         img:
           linkdata?.image ||
@@ -38,8 +38,9 @@ function Addpost() {
       AddPost(item);
       console.log("after");
       console.log(postItem);
-      const url = `https://chimes-api.vercel.app/api/v1/home`;
-      postData(item, url);
+      const url = `https://chimes-api.vercel.app/api/v2/posts/home`;
+      const token = localStorage.getItem('token')
+      postData(item, url,token);
     } else {
       isMounted.current = true;
     }

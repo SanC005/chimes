@@ -1,11 +1,12 @@
 import React from "react";
 
-export default function getData(url) {
+export default function getData(url,token) {
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       }
     })
       .then((response) => {

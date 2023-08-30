@@ -1,12 +1,13 @@
-function postData(item, url) {
+function postData(item, url,token) {
   return new Promise((resolve, reject) => {
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({
-        id: item?.id,
+        temp_id: item?.temp_id,
         title: item?.title,
         img: item?.img,
         postTitle: item?.postTitle,
@@ -47,6 +48,7 @@ function postUser(item, url) {
     })
       .then((response) => {
         if (response.ok) {
+          console.log("success")
           return response.json();
         } else {
           console.log(JSON.stringify(item));

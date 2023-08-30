@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import EditIcon from "@mui/icons-material/Edit";
@@ -29,6 +29,14 @@ function Profile() {
         ...prevState,description:newtext
       }))
   }
+    useEffect(() => {
+      const user = localStorage.getItem('username')
+      if(user){
+        setPerson((prev) => ({...prev,username:user}))
+      }else{
+        setPerson((prev)=>({...prev,username:"USERNAME"}))
+      }
+    }, [])
     
 
   return (
