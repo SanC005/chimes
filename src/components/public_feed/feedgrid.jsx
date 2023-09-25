@@ -17,7 +17,8 @@ function Feedgrid({ data}) {
         visibility={postData.visibility}
         bookmark={postData.bookmark}
         like={postData.like}
-        
+        createdBy={postData.createdBy}
+        createdAt={postData.createdAt}
       />
     </li>
   ));

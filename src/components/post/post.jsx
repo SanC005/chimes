@@ -92,6 +92,8 @@ function Post({ like,bookmark, visibility, ...props }) {
     <div>
       <div className="bg-green-400 text-center max-w-md m-auto h-80 rounded-2xl flex flex-col ">
         <div className="flex justify-end gap-1">
+          {/* <div>createdBy - </div> */}
+          {/* <div>Created At - </div> */}
           <div className={`${buttonStyles}`} onClick={() => changeVisibility()}>
             {/* <Visibility /> */}
             {visibility ? <Visibility /> : <VisibilityOff />}

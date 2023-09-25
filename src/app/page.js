@@ -17,7 +17,8 @@ export default function Home() {
   useEffect(() => {
     console.log("rendering...");
     const token = localStorage.getItem('token')
-    const url = `https://chimes-api.vercel.app/api/v2/posts/home`;
+    //home to feed/all
+    const url = `https://chimes-api.vercel.app/api/v2/posts/feed`;
     getData(url,token).then((data) => {
       console.log("this is the data")
       console.log(data?.posts)
